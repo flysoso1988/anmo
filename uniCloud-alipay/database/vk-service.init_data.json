@@ -1,0 +1,62 @@
+[
+  {
+    "name": "足底按摩",
+    "price": 128,
+    "duration": 60,
+    "status": true
+  },
+  {
+    "name": "全身推拿",
+    "price": 198,
+    "duration": 90,
+    "status": true
+  },
+  {
+    "name": "肩颈调理",
+    "price": 158,
+    "duration": 60,
+    "status": true
+  },
+  {
+    "name": "精油SPA",
+    "price": 298,
+    "duration": 90,
+    "status": true
+  },
+  {
+    "name": "中医理疗",
+    "price": 268,
+    "duration": 90,
+    "status": true
+  },
+  {
+    "name": "足部刮痧",
+    "price": 88,
+    "duration": 45,
+    "status": true
+  },
+  {
+    "name": "拔罐疗法",
+    "price": 108,
+    "duration": 45,
+    "status": true
+  },
+  {
+    "name": "耳烛养生",
+    "price": 68,
+    "duration": 30,
+    "status": true
+  },
+  {
+    "name": "头部按摩",
+    "price": 88,
+    "duration": 30,
+    "status": true
+  },
+  {
+    "name": "热石疗法",
+    "price": 238,
+    "duration": 75,
+    "status": true
+  }
+]

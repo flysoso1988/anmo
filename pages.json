@@ -5,6 +5,25 @@
       "style": {
         "navigationBarTitleText": "首页"
       }
+    },
+    {
+      "path": "pages/record/add",
+      "style": {
+        "navigationBarTitleText": "上钟"
+      }
+    },
+    {
+      "path": "pages/record/list",
+      "style": {
+        "navigationBarTitleText": "上钟记录",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/record/detail",
+      "style": {
+        "navigationBarTitleText": "记录详情"
+      }
     }
   ],
   "subPackages": [

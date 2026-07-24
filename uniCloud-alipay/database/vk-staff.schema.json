@@ -1,0 +1,39 @@
+{
+  "bsonType": "object",
+  "required": ["name"],
+  "permission": {
+    "read": true,
+    "create": false,
+    "update": false,
+    "delete": false
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成",
+      "bsonType": "string"
+    },
+    "name": {
+      "description": "技师姓名",
+      "bsonType": "string"
+    },
+    "phone": {
+      "description": "手机号",
+      "bsonType": "string"
+    },
+    "avatar": {
+      "description": "头像URL",
+      "bsonType": "string"
+    },
+    "status": {
+      "description": "状态：0-空闲 1-上钟 2-休假",
+      "bsonType": "number",
+      "defaultValue": 0
+    },
+    "_add_time": {
+      "description": "创建时间",
+      "bsonType": "timestamp",
+      "forceDefaultValue": { "$env": "now" }
+    }
+  },
+  "version": "0.0.1"
+}
