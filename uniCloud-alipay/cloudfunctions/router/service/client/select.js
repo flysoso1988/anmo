@@ -85,7 +85,7 @@ const cloudObject = {
     let res = { code: 0, msg: '' };
     let { uid } = this.getClientInfo();
     // 业务逻辑开始-----------------------------------------------------------
-    let [roomResult, staffResult] = await Promise.all([
+    let [roomResult, staffResult, activeRecords] = await Promise.all([
       vk.baseDao.select({
         dbName: dbName.room,
         sortArr: [{ name: 'name', type: 'asc' }],
@@ -94,8 +94,29 @@ const cloudObject = {
         dbName: dbName.staff,
         sortArr: [{ name: 'name', type: 'asc' }],
       }),
+      // 查询所有进行中的记录，用于填充房间的技师和结束时间
+      vk.baseDao.select({
+        dbName: dbName.record,
+        whereJson: { status: 0 },
+        fieldJson: { _id: true, room_id: true, staff_name: true, end_time: true },
+      }),
     ]);
-    res.roomList = roomResult.rows;
+    // 建立 room_id -> 进行中记录 的映射
+    let activeRecordMap = {};
+    (activeRecords.rows || []).forEach(record => {
+      activeRecordMap[record.room_id] = record;
+    });
+    // 合并进行中记录的数据到房间对象
+    let roomList = roomResult.rows.map(room => {
+      let active = activeRecordMap[room._id];
+      if (active) {
+        room.technician = active.staff_name;
+        room.end_time = active.end_time;
+        room.record_id = active._id;
+      }
+      return room;
+    });
+    res.roomList = roomList;
     res.staffList = staffResult.rows;
     // 业务逻辑结束-----------------------------------------------------------
     return res;

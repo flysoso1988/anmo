@@ -1,11 +1,20 @@
 <template>
   <view class="app">
-    <!-- 页面内容开始 -->
-
+    <!-- 自定义导航栏 -->
+    <wd-navbar title="首页" fixed placeholder safe-area-inset-top bordered @click-left="sidebarShow = true">
+      <template #left>
+        <view class="hamburger">
+          <view class="hamburger-line"></view>
+          <view class="hamburger-line"></view>
+          <view class="hamburger-line"></view>
+        </view>
+      </template>
+    </wd-navbar>
+    <view style="height: 24rpx"></view>
     <!-- 今日营收 Hero -->
     <wd-card title="今日实时营收">
       <view class="revenue-hero">
-        <view class="hero-amount"> <text class="currency">¥</text>{{ formatMoney(revenue.today) }} </view>
+        <view class="hero-amount"> <text class="currency">¥</text>{{ vk.pubfn.priceFilter(revenue.today, { format: 'thousandSeparator' }) }} </view>
         <view class="hero-change" :class="revenue.change >= 0 ? 'up' : 'down'">
           <wd-icon :name="revenue.change >= 0 ? 'arrow-up' : 'arrow-down'" size="12px" :color="revenue.change >= 0 ? '#3d8c40' : '#b33a3a'"></wd-icon>
           较昨日 {{ revenue.change >= 0 ? '+' : '' }}{{ revenue.change }}%
@@ -32,13 +41,7 @@
     <!-- 房间列表 -->
     <wd-card title="房间">
       <view class="room-grid" v-if="roomList.length > 0">
-        <view v-for="item in roomList" :key="item._id" class="room-card" :class="'status-' + item.status" @click="onRoomClick(item)">
-          <text class="room-name">{{ item.name }}</text>
-          <template v-if="item.status === 1">
-            <text class="room-tech">{{ item.technician || '技师' }}</text>
-            <text class="room-endtime">{{ item.end_time || '--:--' }}</text>
-          </template>
-        </view>
+        <room-card v-for="item in roomList" :key="item._id" :room="item" @click="onRoomClick" />
       </view>
       <view v-else class="empty-tip">暂无房间</view>
     </wd-card>
@@ -56,56 +59,52 @@
       <view v-else class="empty-tip">暂无技师</view>
     </wd-card>
 
-    <!-- 页面内容结束 -->
+    <!-- 侧边栏 -->
+    <wd-popup v-model="sidebarShow" position="left" :modal="true" custom-style="width: 520rpx; height: 100%; background: #fff;">
+      <view class="sidebar">
+        <view class="sidebar-header">
+          <text class="sidebar-title">足疗管理</text>
+        </view>
+        <view class="sidebar-menu">
+          <view class="sidebar-item" @click="sidebarTo('/pages/index/index')">
+            <text class="sidebar-item-text">首页</text>
+          </view>
+          <view class="sidebar-item" @click="sidebarTo('/pages/record/list')">
+            <text class="sidebar-item-text">上钟记录</text>
+          </view>
+          <view class="sidebar-item" @click="sidebarTo('/pages/record/add')">
+            <text class="sidebar-item-text">上钟</text>
+          </view>
+        </view>
+      </view>
+    </wd-popup>
   </view>
 </template>
 
 <script>
+  import roomCard from './components/room-card.vue';
+
   let vk = uni.vk;
   export default {
+    components: { roomCard },
     data() {
       return {
+        sidebarShow: false,
         revenue: {
-          today: 28650,
-          change: 12.5,
-          orders: 42,
-          visitors: 68,
-          newMembers: 5,
+          today: 0,
+          change: 0,
+          orders: 0,
+          visitors: 0,
+          newMembers: 0,
         },
         roomList: [],
         staffList: [],
-        roomStatusText: {
-          0: '空闲',
-          1: '忙碌',
-          2: '维护',
-        },
-        roomTagType: {
-          0: 'success',
-          1: 'warning',
-          2: 'info',
-        },
-        staffStatusText: {
-          0: '空闲',
-          1: '上钟',
-          2: '休假',
-        },
-        staffTagType: {
-          0: 'success',
-          1: 'warning',
-          2: 'info',
-        },
         scrollTop: 0,
       };
     },
     onPullDownRefresh() {
-      vk.callFunction({
-        url: 'client/select.getHomeList',
-        success: (res) => {
-          this.roomList = res.roomList;
-          this.staffList = res.staffList;
-          uni.stopPullDownRefresh();
-        },
-      });
+      this.toLoadData();
+      uni.stopPullDownRefresh();
     },
     onLoad(options = {}) {
       vk = uni.vk;
@@ -113,24 +112,39 @@
       this.init(options);
     },
     methods: {
-      formatMoney(val) {
-        return Number(val)
-          .toFixed(0)
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      },
       init(options = {}) {
         console.log('init: ', options);
         this.toLoadData();
       },
       toLoadData() {
-        vk.callFunction({
-          url: 'client/select.getHomeList',
-          title: '加载中',
-          success: (res) => {
-            this.roomList = res.roomList;
-            this.staffList = res.staffList;
-          },
-        });
+        Promise.all([
+          new Promise((resolve) => {
+            vk.callFunction({
+              url: 'client/select.getHomeList',
+              success: (res) => {
+                this.roomList = res.roomList;
+                this.staffList = res.staffList;
+                resolve();
+              },
+              fail: resolve,
+            });
+          }),
+          new Promise((resolve) => {
+            vk.callFunction({
+              url: 'client/stat.getOverview',
+              success: (res) => {
+                if (res.code === 0) {
+                  let today = res.data.today;
+                  this.revenue.today = today.actualRevenue || 0;
+                  this.revenue.orders = today.count || 0;
+                  this.revenue.visitors = today.completedCount || 0;
+                }
+                resolve();
+              },
+              fail: resolve,
+            });
+          }),
+        ]);
       },
       async onRoomClick(room) {
         const { _id: room_id, name, status } = room;
@@ -148,88 +162,120 @@
           });
         }
       },
+      sidebarTo(url) {
+        this.sidebarShow = false;
+        vk.navigateTo(url);
+      },
     },
     watch: {},
     computed: {},
   };
 </script>
 <style lang="scss" scoped>
-  /* ====== 营收 Hero 卡片 ====== */
+  .app {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+
+  /* 汉堡菜单 */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 8rpx;
+  }
+  .hamburger-line {
+    width: 36rpx;
+    height: 4rpx;
+    background: #333;
+    border-radius: 2rpx;
+  }
+
+  /* 侧边栏 */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .sidebar-header {
+    padding: 80rpx 40rpx 40rpx;
+    border-bottom: 1rpx solid #e2e4e8;
+  }
+  .sidebar-title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #2a2d33;
+  }
+  .sidebar-menu {
+    flex: 1;
+    padding: 20rpx 0;
+  }
+  .sidebar-item {
+    padding: 28rpx 40rpx;
+    border-bottom: 1rpx solid #f5f5f5;
+  }
+  .sidebar-item-text {
+    font-size: 30rpx;
+    color: #2a2d33;
+  }
+
+  /* 内容 */
+  .content {
+    padding: 32rpx;
+    padding-bottom: 40rpx;
+  }
+
+  /* 营收 */
   .revenue-hero {
     position: relative;
   }
-
-  .revenue-hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -30%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(184, 148, 74, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
   .hero-amount {
     font-size: 36px;
     font-weight: 700;
     font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
-    color: #b8944a;
+    color: #dc3545;
     line-height: 1;
     margin-bottom: 4px;
   }
-
   .hero-amount .currency {
     font-size: 18px;
     font-weight: 500;
     margin-right: 2px;
   }
-
   .hero-change {
     font-size: 12px;
     display: flex;
     align-items: center;
     gap: 4px;
   }
-
   .hero-change.up {
     color: #3d8c40;
   }
-
   .hero-change.down {
     color: #b33a3a;
   }
-
   .hero-meta {
     display: flex;
     justify-content: space-between;
     padding-top: 12px;
-    border-top: 1px solid rgba(184, 148, 74, 0.25);
+    border-top: 1px solid #e2e4e8;
   }
-
   .meta-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
   }
-
   .meta-val {
     font-size: 22px;
     font-weight: 700;
     font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
   }
-
   .meta-label {
     font-size: 11px;
     color: #999999;
   }
 
-  .app {
-    min-height: 100vh;
-    background-color: #f5f5f5;
-  }
-
+  /* 房间 */
   .room-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -237,70 +283,21 @@
     padding-bottom: 24rpx;
   }
 
-  .room-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4rpx;
-    border-radius: 16rpx;
-    padding: 24rpx 8rpx;
-    border: 2rpx solid;
-    transition: all 0.2s;
-    width: 200rpx;
-    height: 200rpx;
-    justify-self: center;
-    box-sizing: border-box;
-
-    &.status-0 {
-      background-color: #f0faf0;
-      border-color: #b7eb8f;
-    }
-
-    &.status-1 {
-      background-color: #fff2f0;
-      border-color: #ffa39e;
-    }
-
-    &.status-2 {
-      background-color: #fafafa;
-      border-color: #d9d9d9;
-    }
-  }
-
-  .room-name {
-    font-size: 30rpx;
-    font-weight: 700;
-    color: #333;
-  }
-
-  .room-tech {
-    font-size: 22rpx;
-    color: #666;
-  }
-
-  .room-endtime {
-    font-size: 20rpx;
-    color: #999;
-  }
-
+  /* 技师 */
   .staff-scroll {
     white-space: nowrap;
   }
-
   .staff-grid {
     display: inline-flex;
     gap: 20rpx;
     padding-bottom: 32rpx;
   }
-
   .staff-item {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .staff-avatar {
     width: 90rpx;
     height: 90rpx;
@@ -311,18 +308,15 @@
     justify-content: center;
     background-color: #f0f0f0;
   }
-
   .avatar-img {
     width: 100%;
     height: 100%;
   }
-
   .avatar-text {
     font-size: 36rpx;
     color: #666;
     font-weight: 500;
   }
-
   .status-dot {
     position: absolute;
     bottom: 0;
@@ -331,11 +325,9 @@
     height: 20rpx;
     border-radius: 50%;
     border: 4rpx solid #fff;
-
     &.busy {
       background-color: #ff4d4f;
     }
-
     &.idle {
       background-color: #52c41a;
     }

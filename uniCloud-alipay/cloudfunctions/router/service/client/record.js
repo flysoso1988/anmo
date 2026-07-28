@@ -67,9 +67,9 @@ const cloudObject = {
       return { code: -1, msg: '该服务项目不可用' };
     }
 
-    // 计算时间
-    let startTime = new Date();
-    let endTime = new Date(startTime.getTime() + service.duration * 60 * 1000);
+    // 计算时间（时间戳，毫秒）
+    let startTime = Date.now();
+    let endTime = startTime + service.duration * 60 * 1000;
 
     // 创建上钟记录
     let recordData = {
@@ -79,7 +79,7 @@ const cloudObject = {
       room_name: room.name,
       service_id: service._id,
       service_name: service.name,
-      price: service.price,
+      price: service.price * 100,
       duration: service.duration,
       start_time: startTime,
       end_time: endTime,
@@ -230,7 +230,7 @@ const cloudObject = {
       whereJson: { _id: id },
       dataJson: {
         status: 1,
-        actual_end_time: new Date(),
+        actual_end_time: Date.now(),
       },
     });
 

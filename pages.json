@@ -3,6 +3,8 @@
     {
       "path": "pages/index/index",
       "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
         "navigationBarTitleText": "首页"
       }
     },

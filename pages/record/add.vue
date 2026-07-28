@@ -12,7 +12,6 @@
       <view v-else class="room-grid">
         <view v-for="room in roomList" :key="room._id" class="room-tile" :class="{ selected: form.room_id === room._id }" @click="selectRoom(room)">
           <text class="room-number">{{ room.name }}</text>
-          <text class="room-label">{{ room.type === 1 ? 'VIP房' : '标准房' }}</text>
         </view>
       </view>
     </view>
@@ -39,7 +38,7 @@
             <text class="service-name">{{ service.name }}</text>
             <text class="service-meta">{{ service.duration }}分钟</text>
           </view>
-          <text class="service-price">¥{{ service.price }}</text>
+          <text class="service-price">¥{{ vk.pubfn.priceFilter(service.price) }}</text>
           <view class="service-check" :class="{ checked: form.service_id === service._id }">
             <text v-if="form.service_id === service._id" class="check-icon">✓</text>
           </view>

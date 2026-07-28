@@ -1,62 +1,65 @@
 [
   {
-    "name": "足底按摩",
-    "price": 128,
-    "duration": 60,
-    "status": true
-  },
-  {
-    "name": "全身推拿",
-    "price": 198,
-    "duration": 90,
-    "status": true
-  },
-  {
-    "name": "肩颈调理",
-    "price": 158,
-    "duration": 60,
-    "status": true
-  },
-  {
     "name": "精油SPA",
-    "price": 298,
+    "description": "精油SPA理疗项目",
+    "price": 39800,
     "duration": 90,
     "status": true
   },
   {
-    "name": "中医理疗",
-    "price": 268,
+    "name": "SPA",
+    "description": "SPA理疗项目",
+    "price": 29800,
     "duration": 90,
     "status": true
   },
   {
-    "name": "足部刮痧",
-    "price": 88,
-    "duration": 45,
+    "name": "中式按摩",
+    "description": "中式按摩理疗项目",
+    "price": 19800,
+    "duration": 70,
     "status": true
   },
   {
-    "name": "拔罐疗法",
-    "price": 108,
-    "duration": 45,
+    "name": "泰式按摩",
+    "description": "泰式按摩理疗项目",
+    "price": 16800,
+    "duration": 60,
     "status": true
   },
   {
-    "name": "耳烛养生",
-    "price": 68,
+    "name": "精油开背",
+    "description": "精油开背理疗项目",
+    "price": 10000,
     "duration": 30,
     "status": true
   },
   {
-    "name": "头部按摩",
-    "price": 88,
-    "duration": 30,
+    "name": "足疗",
+    "description": "足疗理疗项目",
+    "price": 6800,
+    "duration": 40,
     "status": true
   },
   {
-    "name": "热石疗法",
-    "price": 238,
-    "duration": 75,
+    "name": "拔罐",
+    "description": "拔罐理疗项目",
+    "price": 3000,
+    "duration": 0,
+    "status": true
+  },
+  {
+    "name": "刮痧",
+    "description": "刮痧理疗项目",
+    "price": 3000,
+    "duration": 0,
+    "status": true
+  },
+  {
+    "name": "采耳",
+    "description": "采耳理疗项目",
+    "price": 3000,
+    "duration": 0,
     "status": true
   }
 ]

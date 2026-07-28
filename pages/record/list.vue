@@ -40,7 +40,7 @@
 
           <template #footer>
             <view class="record-footer">
-              <view class="record-price">¥{{ item.price }}</view>
+              <view class="record-price">¥{{ vk.pubfn.priceFilter(item.price, { format: 'thousandSeparator' }) }}</view>
             </view>
           </template>
         </wd-card>
@@ -157,15 +157,9 @@
       goDetail(id) {
         vk.navigateTo(`/pages/record/detail?id=${id}`);
       },
-      // 格式化时间
       formatTime(timestamp) {
         if (!timestamp) return '';
-        let date = new Date(timestamp);
-        let month = (date.getMonth() + 1).toString().padStart(2, '0');
-        let day = date.getDate().toString().padStart(2, '0');
-        let hour = date.getHours().toString().padStart(2, '0');
-        let minute = date.getMinutes().toString().padStart(2, '0');
-        return `${month}-${day} ${hour}:${minute}`;
+        return vk.pubfn.timeFormat(timestamp, 'MM-dd hh:mm');
       },
     },
     watch: {},

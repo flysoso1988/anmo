@@ -18,7 +18,7 @@
         </view>
         <view class="service-price">
           <text class="currency">¥</text>
-          <text class="price-value">{{ detail.price }}</text>
+          <text class="price-value">{{ vk.pubfn.priceFilter(detail.price) }}</text>
         </view>
       </view>
     </view>
@@ -129,9 +129,7 @@
       },
       remainingTime() {
         if (!this.detail.start_time) return 0;
-        const startMs = new Date(this.detail.start_time).getTime();
-        if (isNaN(startMs)) return 0;
-        const elapsed = Date.now() - startMs;
+        const elapsed = Date.now() - this.detail.start_time;
         return Math.max(0, this.totalDurationMs - elapsed);
       },
     },
@@ -163,11 +161,8 @@
           this.detail = res.data;
           this.updateStatusClass();
           if (this.detail.status === 0 && this.detail.start_time) {
-            const startMs = new Date(this.detail.start_time).getTime();
-            if (!isNaN(startMs)) {
-              const elapsed = Date.now() - startMs;
-              this.progressPct = Math.min(100, Math.round((elapsed / this.totalDurationMs) * 100));
-            }
+            const elapsed = Date.now() - this.detail.start_time;
+            this.progressPct = Math.min(100, Math.round((elapsed / this.totalDurationMs) * 100));
           }
         } else {
           vk.toast({ title: res.msg });
@@ -191,18 +186,14 @@
       },
       formatDate(timestamp) {
         if (!timestamp) return '';
-        const date = new Date(timestamp);
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-        return `${date.getFullYear()}年${month}月${day}日 ${weekDays[date.getDay()]}`;
+        let dateStr = vk.pubfn.timeFormat(timestamp, 'yyyy年M月d日');
+        let weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+        let date = new Date(timestamp);
+        return `${dateStr} ${weekDays[date.getDay()]}`;
       },
       formatTime(timestamp) {
         if (!timestamp) return '';
-        const date = new Date(timestamp);
-        const hour = date.getHours().toString().padStart(2, '0');
-        const minute = date.getMinutes().toString().padStart(2, '0');
-        return `${hour}:${minute}`;
+        return vk.pubfn.timeFormat(timestamp, 'hh:mm');
       },
       endRecord() {
         uni.showModal({
