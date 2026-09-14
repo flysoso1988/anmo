@@ -13,7 +13,6 @@ module.exports = {
     statUser: '1h', // 每小时执行（框架内置用户统计任务）
     clearExpiredCache: '1h', // 每小时清理 vk-global-data 表已过期的缓存
     timer1: '60s', // 每60秒执行（此处写60s和1m表现一致）
-    autoEndRecord: '60s', // 每60秒检查并自动结束超时的上钟记录
     // 更多示例：
     // timer2: ['1h', '12:30:00'], // 每小时和每天12点30执行
     // timer3: '2h',                                       // 每2小时

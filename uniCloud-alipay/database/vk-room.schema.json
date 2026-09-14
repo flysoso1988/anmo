@@ -22,7 +22,7 @@
       "defaultValue": 0
     },
     "status": {
-      "description": "状态：0-空闲 1-使用中 2-维护",
+      "description": "状态：0-空闲 1-使用中 2-清理中",
       "bsonType": "number",
       "defaultValue": 0
     },

@@ -85,8 +85,8 @@ const cloudObject = {
         // 进行中的记录
         activeRecords.push(item);
         todayEstimated.push(item);
-      } else if (item.status === 1) {
-        // 已完成的记录，判断是否今日下钟
+      } else if (item.status === 1 || item.status === 2) {
+        // 已完成/已支付的记录，判断是否今日下钟
         let endTime = item.actual_end_time || item.end_time;
         let endDate = new Date(endTime);
         if (endDate >= today) {

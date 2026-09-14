@@ -14,10 +14,13 @@
     <!-- 今日营收 Hero -->
     <wd-card title="今日实时营收">
       <view class="revenue-hero">
-        <view class="hero-amount"> <text class="currency">¥</text>{{ vk.pubfn.priceFilter(revenue.today, { format: 'thousandSeparator' }) }} </view>
+        <view class="hero-amount">
+          <text class="currency">¥</text>
+          <text>{{ vk.pubfn.priceFilter(revenue.today, { format: 'thousandSeparator' }) }}</text>
+        </view>
         <view class="hero-change" :class="revenue.change >= 0 ? 'up' : 'down'">
           <wd-icon :name="revenue.change >= 0 ? 'arrow-up' : 'arrow-down'" size="12px" :color="revenue.change >= 0 ? '#3d8c40' : '#b33a3a'"></wd-icon>
-          较昨日 {{ revenue.change >= 0 ? '+' : '' }}{{ revenue.change }}%
+          <text>较昨日 {{ revenue.change >= 0 ? '+' : '' }}{{ revenue.change }}%</text>
         </view>
       </view>
       <template #footer>
@@ -117,49 +120,30 @@
         this.toLoadData();
       },
       toLoadData() {
-        Promise.all([
-          new Promise((resolve) => {
-            vk.callFunction({
-              url: 'client/select.getHomeList',
-              success: (res) => {
-                this.roomList = res.roomList;
-                this.staffList = res.staffList;
-                resolve();
-              },
-              fail: resolve,
-            });
-          }),
-          new Promise((resolve) => {
-            vk.callFunction({
-              url: 'client/stat.getOverview',
-              success: (res) => {
-                if (res.code === 0) {
-                  let today = res.data.today;
-                  this.revenue.today = today.actualRevenue || 0;
-                  this.revenue.orders = today.count || 0;
-                  this.revenue.visitors = today.completedCount || 0;
-                }
-                resolve();
-              },
-              fail: resolve,
-            });
-          }),
-        ]);
+        vk.callFunction({
+          url: 'client/home.getHome',
+          success: (res) => {
+            this.roomList = res.roomList || [];
+            this.staffList = res.staffList || [];
+            this.revenue = res.revenue;
+          },
+        });
       },
       async onRoomClick(room) {
-        const { _id: room_id, name, status } = room;
-
+        const { _id: room_id, name, status, record_id } = room;
+        console.log(room);
         if (status === 0) {
           vk.navigateTo(`/pages/record/add?room_id=${room_id}&room_name=${encodeURIComponent(name)}`);
         } else {
-          vk.callFunction({
-            url: 'client/record.getActiveByRoom',
-            data: { room_id: room._id },
-            success: (res) => {
-              const { _id: record_id } = res.data;
-              vk.navigateTo(`/pages/record/detail?id=${record_id}`);
-            },
-          });
+          vk.navigateTo(`/pages/record/detail?id=${record_id}`);
+          // vk.callFunction({
+          //   url: 'client/record.getActiveByRoom',
+          //   data: { room_id: room._id },
+          //   success: (res) => {
+          //     const { _id: record_id } = res.data;
+          //     vk.navigateTo(`/pages/record/detail?id=${record_id}`);
+          //   },
+          // });
         }
       },
       sidebarTo(url) {

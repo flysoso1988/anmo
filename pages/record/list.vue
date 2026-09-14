@@ -62,12 +62,13 @@
     data() {
       return {
         tabs: [
-          { label: '全部', value: -1 },
+          { label: '全部', value: 'all' },
           { label: '进行中', value: 0 },
           { label: '已完成', value: 1 },
-          { label: '已取消', value: 2 },
+          { label: '已支付', value: 2 },
+          { label: '已取消', value: -1 },
         ],
-        currentTab: -1,
+        currentTab: 'all',
         list: [],
         page: 1,
         pageSize: 20,
@@ -76,12 +77,14 @@
         statusText: {
           0: '进行中',
           1: '已完成',
-          2: '已取消',
+          2: '已支付',
+          '-1': '已取消',
         },
         statusType: {
           0: 'warning',
           1: 'success',
-          2: 'info',
+          2: 'primary',
+          '-1': 'info',
         },
         scrollTop: 0,
       };
@@ -129,7 +132,7 @@
             page: this.page,
             pageSize: this.pageSize,
           };
-          if (this.currentTab !== -1) {
+          if (this.currentTab !== 'all') {
             data.status = this.currentTab;
           }
           let res = await vk.callFunction({

@@ -1,11 +1,12 @@
 <template>
   <view class="app">
+    <view style="height: 24rpx"></view>
     <!-- 状态卡片 -->
     <view class="status-card">
       <view class="status-top">
         <view class="status-badge" :class="statusClass">
           <view class="dot"></view>
-          <text class="badge-text">{{ statusText[detail.status] }}</text>
+          <text class="badge-text">{{ statusText }}</text>
         </view>
         <view class="order-id">#{{ detail.order_no || detail._id }}</view>
       </view>
@@ -65,14 +66,7 @@
     <view class="elapsed-bar" v-if="detail.status === 0 && detail.start_time">
       <view class="elapsed-left">
         <text class="elapsed-label">剩余时间</text>
-        <wd-count-down
-          ref="countDown"
-          :time="remainingTime"
-          format="HH:mm:ss"
-          :auto-start="true"
-          @change="onCountDownChange"
-          @finish="onCountDownFinish"
-        />
+        <wd-count-down ref="countDown" :time="remainingTime" format="HH:mm:ss" :auto-start="true" @change="onCountDownChange" @finish="onCountDownFinish" />
       </view>
       <view class="elapsed-progress">
         <wd-circle v-model="progressPct" :size="56" :stroke-width="4" color="#1a9a6c" layer-color="#e2e4e8">
@@ -95,31 +89,31 @@
         <view class="timeline-item">
           <view class="timeline-dot end"></view>
           <view class="timeline-time">{{ detail.actual_end_time ? formatTime(detail.actual_end_time) : '—' }}</view>
-          <view class="timeline-label">结束时间</view>
+          <view class="timeline-label">结束上钟</view>
         </view>
       </view>
     </view>
 
-    <!-- 操作按钮 -->
+    <!-- 操作按钮 - 进行中 -->
     <view class="actions" v-if="detail.status === 0">
-      <view class="btn btn-danger" @click="endRecord">结束上钟</view>
+      <view class="btn btn-danger" @click="endRecord">下钟</view>
+      <view class="btn btn-secondary" @click="addService">加钟</view>
+    </view>
+    <!-- 操作按钮 - 已完成（未支付） -->
+    <view class="actions" v-if="detail.status === 1">
       <view class="btn btn-secondary" @click="addService">追加项目</view>
+      <view class="btn btn-primary" @click="payRecord">立即支付</view>
     </view>
   </view>
 </template>
 
 <script>
-  let vk = uni.vk;
+  var vk = uni.vk;
   export default {
     data() {
       return {
+        options: {},
         detail: {},
-        statusText: {
-          0: '进行中',
-          1: '已完成',
-          2: '已取消',
-        },
-        statusClass: '',
         progressPct: 0,
       };
     },
@@ -132,12 +126,29 @@
         const elapsed = Date.now() - this.detail.start_time;
         return Math.max(0, this.totalDurationMs - elapsed);
       },
+      statusText() {
+        var map = {
+          0: '进行中',
+          1: '已完成',
+          2: '已支付',
+          '-1': '已取消',
+        };
+        return map[this.detail.status] || '未知';
+      },
+      statusClass() {
+        var map = {
+          0: 'active',
+          1: 'completed',
+          2: 'paid',
+          '-1': 'cancelled',
+        };
+        return map[this.detail.status] || '';
+      },
     },
     onLoad(options) {
       vk = uni.vk;
-      if (options.id) {
-        this.init(options);
-      }
+      this.options = options;
+      this.init();
     },
     onPullDownRefresh() {
       setTimeout(() => {
@@ -145,36 +156,26 @@
       }, 1000);
     },
     methods: {
-      init(options = {}) {
-        if (options.id) {
-          this.loadDetail(options.id);
+      init() {
+        if (!this.options || !this.options.id) {
+          vk.toast('参数错误');
+          return;
         }
+        this.loadDetail();
       },
-      async loadDetail(id) {
-        uni.showLoading({ title: '加载中' });
-        let res = await vk.callFunction({
+      loadDetail() {
+        vk.callFunction({
           url: 'client/record.getDetail',
-          data: { id },
+          data: { id: this.options.id },
+          title: '加载中',
+          success: (res) => {
+            this.detail = res.data;
+            if (this.detail.status === 0 && this.detail.start_time) {
+              const elapsed = Date.now() - this.detail.start_time;
+              this.progressPct = Math.min(100, Math.round((elapsed / this.totalDurationMs) * 100));
+            }
+          },
         });
-        uni.hideLoading();
-        if (res.code === 0) {
-          this.detail = res.data;
-          this.updateStatusClass();
-          if (this.detail.status === 0 && this.detail.start_time) {
-            const elapsed = Date.now() - this.detail.start_time;
-            this.progressPct = Math.min(100, Math.round((elapsed / this.totalDurationMs) * 100));
-          }
-        } else {
-          vk.toast({ title: res.msg });
-        }
-      },
-      updateStatusClass() {
-        const map = {
-          0: 'active',
-          1: 'completed',
-          2: 'cancelled',
-        };
-        this.statusClass = map[this.detail.status] || '';
       },
       onCountDownChange(current) {
         const remainingMs = current.hours * 3600000 + current.minutes * 60000 + current.seconds * 1000 + current.milliseconds;
@@ -196,22 +197,42 @@
         return vk.pubfn.timeFormat(timestamp, 'hh:mm');
       },
       endRecord() {
+        let that = this;
         uni.showModal({
           title: '确认下钟',
           content: '确定要结束本次服务吗？',
           success: async (res) => {
             if (res.confirm) {
+              vk.callFunction({
+                url: 'client/record.end',
+                title: '处理中',
+                data: { id: that.detail._id },
+                success: (res) => {
+                  vk.toast('下钟成功', 'none', () => {
+                    that.detail.status = 1;
+                    that.detail.actual_end_time = Date.now();
+                  });
+                },
+              });
+            }
+          },
+        });
+      },
+      payRecord() {
+        uni.showModal({
+          title: '确认支付',
+          content: `确定要支付 ¥${vk.pubfn.priceFilter(this.detail.price)} 吗？`,
+          success: async (res) => {
+            if (res.confirm) {
               uni.showLoading({ title: '处理中' });
               let result = await vk.callFunction({
-                url: 'client/record.end',
+                url: 'client/record.pay',
                 data: { id: this.detail._id },
               });
               uni.hideLoading();
               if (result.code === 0) {
-                vk.toast({ title: '下钟成功' });
-                this.detail.status = 1;
-                this.detail.actual_end_time = Date.now();
-                this.updateStatusClass();
+                vk.toast({ title: '支付成功' });
+                this.detail.status = 2;
               } else {
                 vk.toast({ title: result.msg });
               }
@@ -248,7 +269,7 @@
     min-height: 100vh;
     background: var(--bg);
     color: var(--fg);
-    padding: 0 32rpx 160rpx;
+    padding: 0 32rpx 60rpx;
   }
 
   /* Status card */
@@ -292,13 +313,22 @@
     background: var(--success-soft);
     color: var(--success);
   }
+  .status-badge.paid {
+    background: #e8f0fe;
+    color: #1a73e8;
+  }
   .status-badge.cancelled {
     background: var(--danger-soft);
     color: var(--danger);
   }
   @keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
   }
   .badge-text {
     font-size: 26rpx;
@@ -531,9 +561,17 @@
 
   /* Actions */
   .actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     gap: 20rpx;
-    margin-top: 16rpx;
+    padding: 20rpx 32rpx;
+    padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+    background: var(--surface);
+    border-top: 1rpx solid var(--border);
+    z-index: 100;
   }
   .btn {
     flex: 1;
@@ -552,5 +590,9 @@
     background: var(--surface);
     color: var(--fg);
     border: 3rpx solid var(--border);
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
   }
 </style>

@@ -57,7 +57,7 @@
       "bsonType": "timestamp"
     },
     "status": {
-      "description": "状态：0-进行中 1-已完成 2-已取消",
+      "description": "状态：0-进行中 1-已完成 2-已支付 -1-已取消",
       "bsonType": "number",
       "defaultValue": 0
     },

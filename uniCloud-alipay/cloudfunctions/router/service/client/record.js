@@ -79,7 +79,7 @@ const cloudObject = {
       room_name: room.name,
       service_id: service._id,
       service_name: service.name,
-      price: service.price * 100,
+      price: service.price,
       duration: service.duration,
       start_time: startTime,
       end_time: endTime,
@@ -128,7 +128,7 @@ const cloudObject = {
     let { status, page = 1, pageSize = 20 } = data;
     // 业务逻辑开始-----------------------------------------------------------
     let whereJson = {};
-    if (status !== undefined && status !== -1) {
+    if (status !== undefined) {
       whereJson.status = status;
     }
 
@@ -242,13 +242,53 @@ const cloudObject = {
     });
 
     // 更新房间状态为空闲
+    // await vk.baseDao.update({
+    //   dbName: dbName.room,
+    //   whereJson: { _id: record.room_id },
+    //   dataJson: { status: 0 },
+    // });
+
+    res.msg = '下钟成功';
+    // 业务逻辑结束-----------------------------------------------------------
+    return res;
+  },
+
+  /**
+   * 支付（标记记录为已支付）
+   * @url client/record.pay
+   */
+  pay: async function (data) {
+    let res = { code: 0, msg: '' };
+    let { uid } = this.getClientInfo();
+    let { id } = data;
+    // 业务逻辑开始-----------------------------------------------------------
+    if (!id) {
+      return { code: -1, msg: '记录ID不能为空' };
+    }
+
+    let record = await vk.baseDao.findById({
+      dbName: dbName.record,
+      id: id,
+    });
+
+    if (!record) {
+      return { code: -1, msg: '记录不存在' };
+    }
+    if (record.status !== 1) {
+      return { code: -1, msg: '仅已完成状态可支付' };
+    }
+
+    await vk.baseDao.update({
+      dbName: dbName.record,
+      whereJson: { _id: id },
+      dataJson: { status: 2 },
+    });
+
     await vk.baseDao.update({
       dbName: dbName.room,
       whereJson: { _id: record.room_id },
       dataJson: { status: 0 },
     });
-
-    res.msg = '下钟成功';
     // 业务逻辑结束-----------------------------------------------------------
     return res;
   },
