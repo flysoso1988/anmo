@@ -50,6 +50,7 @@ const vk = {
   checkToken: callFunctionUtil.checkToken,
   deleteToken: callFunctionUtil.deleteToken,
   uploadFile: callFunctionUtil.uploadFile,
+  chooseAndUploadFile: callFunctionUtil.chooseAndUploadFile,
   getConfig: callFunctionUtil.getConfig,
   emitRefreshToken: callFunctionUtil.emitRefreshToken,
   onRefreshToken: callFunctionUtil.onRefreshToken,

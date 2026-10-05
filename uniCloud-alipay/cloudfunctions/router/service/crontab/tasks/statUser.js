@@ -10,7 +10,10 @@ const moduleName = path.basename(__filename, path.extname(__filename));
  * 用户统计
  * 主要统计登录注册用户的数量
  */
-module.exports = async function () {
+module.exports = async function (event) {
+  let {
+    triggerTime, // 本轮统一的触发时间戳（毫秒），不受前面任务执行耗时的影响
+  } = event;
   let res = { code: 0, msg: '' };
   // 业务逻辑开始-----------------------------------------------------------
 
@@ -110,7 +113,8 @@ module.exports = async function () {
     }
   };
 
-  await run();
+  // 使用本轮触发时间，避免串行排队跨小时、跨日后统计到错误的周期。
+  await run(triggerTime);
 
   // 打开下方注释，从今天开始往前计算前90天的统计数据
 

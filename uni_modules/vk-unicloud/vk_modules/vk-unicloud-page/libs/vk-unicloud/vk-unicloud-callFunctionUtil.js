@@ -675,6 +675,126 @@ class CallFunctionUtil {
       promiseRes.catch((err) => {});
       return promiseRes;
     };
+
+    /**
+     * 选择文件并直接上传 vk.chooseAndUploadFile
+     * 文档：[https://vkdoc.fsq.pub/client/pages/chooseAndUploadFile.html](https://vkdoc.fsq.pub/client/pages/chooseAndUploadFile.html)
+     * @param {String} 	obj.type										文件类型，image（图片）、video（视频）、all（任意文件，仅H5和微信小程序支持）（必填）
+     * @param {String} 	obj.title										上传时的loading提示语
+     * @param {Number} 	obj.count										最多可选择的文件数量，type为image时默认9，type为all时默认100（type为video时无效，一次只能选1个）
+     * @param {Array} 	obj.extension								文件扩展名过滤（部分平台支持）
+     * @param {Array} 	obj.sizeType								original 原图，compressed 压缩图，默认二者都有（仅type为image时生效）
+     * @param {Array} 	obj.sourceType							album 从相册选图，camera 使用相机，默认二者都有（type为image、video时生效）
+     * @param {Boolean} obj.compressed							是否压缩所选的视频源文件，默认为true（仅type为video时生效）
+     * @param {String} 	obj.camera									摄像切换，front（前置摄像头）、back（后置摄像头），默认back（仅type为video时生效）
+     * @param {Number} 	obj.maxDuration							拍摄视频最长拍摄时间，单位秒，默认60（仅type为video时生效）
+     * @param {String} 	obj.provider								云存储供应商，支持：unicloud、extStorage、aliyun
+     * @param {String} 	obj.cloudDirectory					指定上传后的云端文件目录
+     * @param {Boolean} obj.needSave								是否需要将文件信息保存到admin素材库
+     * @param {String} 	obj.category_id							素材库分类id，当needSave为true时生效
+     * @param {String} 	obj.uniCloud								上传到其他空间时使用，uniCloud和env二选一即可（仅provider是unicloud时支持）
+     * @param {String} 	obj.env											上传到其他空间时使用，uniCloud和env二选一即可（仅provider是unicloud时支持）
+     * @param {Boolean} obj.cloudPathAsRealPath			阿里云目录支持，需HBX3.8.5以上版本才支持（仅provider是unicloud时支持）
+     * @param {Boolean} obj.cloudPathRemoveChinese	删除文件名中的中文，默认为true
+     * @param {Boolean} obj.errorToast							异常时是否用toast代替alert，默认为false
+     * @param {Boolean} obj.needAlert								异常时是否需要alert，默认为false
+     * @param {Function} obj.onChooseFile						选择文件后、上传前的回调，参数为 { errMsg, tempFilePaths, tempFiles }
+     *                                              若回调有返回值（支持Promise），其解析值会替换实际选择的文件用以上传（tempFiles每项可含 path、cloudPath、fileType）
+     * @param {Function} obj.onUploadProgress				监听上传进度回调，参数为 { index, loaded, total, progress, tempFilePath, tempFile }
+     * @param {Function} obj.success								全部文件上传成功时，执行的回调函数
+     * @param {Function} obj.fail  	 								任一文件上传失败时，执行的回调函数（失败即中断后续文件的上传）
+     * @param {Function} obj.complete 							无论上传成功与否，都会执行的回调函数
+     */
+    this.chooseAndUploadFile = (obj = {}) => {
+      let that = this;
+      let { type, title } = obj;
+      let promiseRes = new Promise((resolve, reject) => {
+        const run = async () => {
+          if (['image', 'video', 'all'].indexOf(type) === -1) {
+            throw { errMsg: 'chooseAndUploadFile:fail 参数 type 仅支持 image、video、all' };
+          }
+          // 选择文件（内含平台条件编译与结果归一化）
+          let chooseRes = await that.chooseFile(obj);
+          // onChooseFile 钩子：返回值非 undefined 时替换选择结果（支持返回Promise以阻塞上传）
+          if (typeof obj.onChooseFile === 'function') {
+            const hookRes = await Promise.resolve(obj.onChooseFile(chooseRes));
+            if (hookRes !== undefined) chooseRes = hookRes;
+          }
+          // 顺序上传（逐个上传，任一失败即中断）
+          let { tempFilePaths = [], tempFiles = [] } = chooseRes;
+          if (title) vk.showLoading(title, 'request');
+          try {
+            for (let index = 0; index < tempFiles.length; index++) {
+              let tempFile = tempFiles[index];
+              let uploadRes;
+              try {
+                uploadRes = await that.uploadFile({
+                  filePath: tempFile.path || tempFilePaths[index],
+                  file: tempFile,
+                  cloudPath: tempFile.cloudPath, // 仅支持逐文件指定（由onChooseFile钩子设置），多文件下顶层cloudPath会互相覆盖故不透传
+                  provider: obj.provider,
+                  cloudDirectory: obj.cloudDirectory,
+                  needSave: obj.needSave,
+                  category_id: obj.category_id,
+                  uniCloud: obj.uniCloud,
+                  env: obj.env,
+                  cloudPathAsRealPath: obj.cloudPathAsRealPath,
+                  cloudPathRemoveChinese: obj.cloudPathRemoveChinese,
+                  encrypt: obj.encrypt,
+                  errorToast: obj.errorToast,
+                  needAlert: obj.needAlert,
+                  onUploadProgress: (e = {}) => {
+                    if (typeof obj.onUploadProgress === 'function') {
+                      obj.onUploadProgress({
+                        index,
+                        loaded: e.loaded,
+                        total: e.total,
+                        progress: e.progress,
+                        tempFilePath: tempFilePaths[index],
+                        tempFile,
+                      });
+                    }
+                  },
+                });
+              } catch (err) {
+                // 附加失败文件的定位信息与已上传的部分结果（tempFiles中已成功项带上传结果字段）
+                // 直接在err上挂载字段，避免浅拷贝丢失Error实例的message/stack等不可枚举属性
+                if (err && typeof err === 'object') {
+                  err.index = index;
+                  err.tempFilePath = tempFilePaths[index];
+                  err.tempFile = tempFile;
+                  err.tempFiles = tempFiles;
+                }
+                throw err;
+              }
+              // 上传结果合并到 tempFile
+              tempFile.url = uploadRes.url;
+              tempFile.fileID = uploadRes.fileID;
+              tempFile.fileURL = uploadRes.fileURL;
+              tempFile.cloudPath = uploadRes.cloudPath;
+              tempFile.provider = uploadRes.provider;
+            }
+          } finally {
+            if (title) vk.hideLoading('request');
+          }
+          return { errMsg: 'chooseAndUploadFile:ok', tempFilePaths, tempFiles };
+        };
+        run()
+          .then((res) => {
+            if (typeof obj.success === 'function') obj.success(res);
+            resolve(res);
+          })
+          .catch((err) => {
+            if (typeof obj.fail === 'function') obj.fail(err);
+            reject(err);
+          })
+          .finally(() => {
+            if (typeof obj.complete === 'function') obj.complete();
+          });
+      });
+      promiseRes.catch((err) => {});
+      return promiseRes;
+    };
   }
   // 云函数普通请求
   runCallFunction(obj = {}) {
@@ -1114,6 +1234,92 @@ class CallFunctionUtil {
     let parts = cloudPath.split('/');
     // 返回最后一个部分（即文件名）
     return parts[parts.length - 1];
+  }
+
+  // 通过UI界面选择文件（内部方法，供 chooseAndUploadFile 使用）
+  chooseFile(obj = {}) {
+    let that = this;
+    let { type, count, extension, sizeType, sourceType, compressed, maxDuration, camera } = obj;
+    return new Promise((resolve, reject) => {
+      if (type === 'image') {
+        uni.chooseImage({
+          count: count || 9,
+          sizeType,
+          sourceType,
+          extension,
+          success: (res) => resolve(that.normalizeChooseFileRes(res, 'image')),
+          fail: reject,
+        });
+      } else if (type === 'video') {
+        uni.chooseVideo({
+          camera,
+          maxDuration,
+          sourceType,
+          extension,
+          compressed: typeof compressed === 'undefined' ? true : compressed,
+          success: (res) => resolve(that.normalizeChooseFileRes(res, 'video')),
+          fail: reject,
+        });
+      } else if (type === 'all') {
+        // #ifdef H5
+        uni.chooseFile({
+          count: count || 100,
+          type: 'all',
+          extension,
+          success: (res) => resolve(that.normalizeChooseFileRes(res, 'all')),
+          fail: reject,
+        });
+        // #endif
+        // #ifdef MP-WEIXIN
+        wx.chooseMessageFile({
+          count: count || 100,
+          type: 'all',
+          extension,
+          success: (res) => resolve(that.normalizeChooseFileRes(res, 'all')),
+          fail: reject,
+        });
+        // #endif
+        // #ifndef H5 || MP-WEIXIN
+        reject({ errMsg: 'chooseAndUploadFile:fail 当前平台不支持 type:"all"，仅 H5 和微信小程序支持选择任意文件' });
+        // #endif
+      }
+    });
+  }
+
+  // 归一化选择文件的结果为 { errMsg, tempFilePaths, tempFiles }（内部方法，供 chooseAndUploadFile 使用）
+  normalizeChooseFileRes(res = {}, type) {
+    let tempFilePaths = [];
+    let tempFiles = [];
+    if (type === 'video') {
+      // uni.chooseVideo 返回的是单数结构（tempFilePath、tempFile）
+      let filePath = res.tempFilePath;
+      let tempFile = res.tempFile || {}; // H5端为File对象，其他端无此字段，用空对象承载
+      tempFilePaths = [filePath];
+      // H5的File对象 name/size 为只读getter，仅在缺失时补充，避免赋值报错
+      if (!tempFile.path) tempFile.path = filePath;
+      if (!tempFile.name) tempFile.name = this.getFileName(filePath);
+      if (!tempFile.size && res.size) tempFile.size = res.size;
+      tempFile.fileType = 'video';
+      if (res.duration) tempFile.duration = res.duration;
+      if (res.width) tempFile.width = res.width;
+      if (res.height) tempFile.height = res.height;
+      tempFiles = [tempFile];
+    } else {
+      tempFilePaths = res.tempFilePaths || [];
+      tempFiles = res.tempFiles || [];
+      // wx.chooseMessageFile 无 tempFilePaths；兼容 chooseMedia 风格的 tempFilePath 字段
+      if (tempFilePaths.length === 0 && tempFiles.length > 0) {
+        tempFilePaths = tempFiles.map((item) => item.path || item.tempFilePath);
+      }
+      tempFiles.forEach((item, index) => {
+        if (!item.path) item.path = item.tempFilePath || tempFilePaths[index];
+        if (!item.name) item.name = this.getFileName(item.path);
+        if (!item.fileType) {
+          item.fileType = type === 'image' ? 'image' : this.getFileType({ filePath: item.path, file: item });
+        }
+      });
+    }
+    return { errMsg: 'chooseAndUploadFile:ok', tempFilePaths, tempFiles };
   }
 
   // 获取云对象权限类型

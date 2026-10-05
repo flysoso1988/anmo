@@ -31,6 +31,10 @@ util.getDateObject = function (date, targetTimezone) {
   } else if (typeof date === 'object') {
     nowDate = new Date(date.getTime()); // 新建一个时间对象
   } else if (typeof date === 'string') {
+    // ISO 8601 字符串自带时区时直接解析，保留 Z 或时区偏移及毫秒
+    if (new RegExp('^\\d{4}-\\d{2}-\\d{2}T.*(?:Z|[+-]\\d{2}:?\\d{2})$').test(date)) {
+      return new Date(date);
+    }
     targetTimezone = util.getTargetTimezone(targetTimezone);
     let targetTimezoneStr = targetTimezone;
     let targetTimezoneF = targetTimezone >= 0 ? '+' : '';
@@ -39,7 +43,7 @@ util.getDateObject = function (date, targetTimezone) {
     } else if (targetTimezone < 0 && targetTimezone > -10) {
       targetTimezoneStr = `-0${targetTimezone * -1}`;
     }
-    let arr1 = date.split(' ');
+    let arr1 = date.split(new RegExp('[T ]'));
     let arr1_1 = arr1[0] || '';
     let arr1_2 = arr1[1] || '';
     let arr2;
@@ -80,7 +84,7 @@ util.getTimeByTimeZone = function (date, targetTimezone) {
 
 /**
  * 日期格式化
- * @param {Date || Number} date 需要格式化的时间
+ * @param {Date || Number || String} date 需要格式化的时间
  * vk.pubfn.timeFormat(new Date(),"yyyy-MM-dd hh:mm:ss");
  */
 util.timeFormat = function (date, fmt = 'yyyy-MM-dd hh:mm:ss', targetTimezone) {

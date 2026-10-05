@@ -68,9 +68,12 @@ const cloudObject = {
         // 1 - 获取技师列表
         async () => {
           return await vk.baseDao.select({
-            dbName: dbName.staff,
+            dbName: dbName.user,
             getMain: true,
-            sortArr: [{ name: 'name', type: 'asc' }],
+            whereJson: {
+              role: 'staff',
+            },
+            sortArr: [{ name: 'nickname', type: 'asc' }],
           });
         },
         // 2 - 今日记录统计（营收、订单、客流）

@@ -81,9 +81,7 @@
     "sms": {
       "name": "重要",
       "codeExpiresIn": 180,
-      "templateId": "",
-      "smsKey": "",
-      "smsSecret": ""
+      "templateId": ""
     },
     "univerify": {
       "appid": ""

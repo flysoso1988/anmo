@@ -54,7 +54,7 @@
       <scroll-view scroll-x class="staff-scroll" v-if="staffList.length > 0">
         <view class="staff-grid">
           <view v-for="item in staffList" :key="item._id" class="staff-item">
-            <wd-avatar :src="item.avatar" :text="item.name[0]"></wd-avatar>
+            <wd-avatar :src="item.avatar" :text="item.nickname"></wd-avatar>
             <view class="status-dot" :class="item.status === 1 ? 'busy' : 'idle'"></view>
           </view>
         </view>

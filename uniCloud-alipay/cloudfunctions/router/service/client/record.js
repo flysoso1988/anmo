@@ -2,6 +2,10 @@
 let vk = uniCloud.vk;
 const dbName = require('../../dao/config.js');
 
+const db = uniCloud.database(); // 全局数据库引用
+const _ = db.command; // 数据库操作符
+const $ = _.aggregate; // 聚合查询操作符
+
 const cloudObject = {
   isCloudObject: true,
 
@@ -19,7 +23,6 @@ const cloudObject = {
     }
     return res;
   },
-
   /**
    * 提交上钟
    * @url client/record.add
@@ -27,7 +30,7 @@ const cloudObject = {
   add: async function (data) {
     let res = { code: 0, msg: '' };
     let { uid } = this.getClientInfo();
-    let { staff_id, room_id, service_id, customer_name, customer_phone, remark } = data;
+    let { staff_id, staff_name, room_id, service_id, customer_name, customer_phone, remark } = data;
     // 业务逻辑开始-----------------------------------------------------------
     // 参数校验
     if (!staff_id) {
@@ -40,14 +43,16 @@ const cloudObject = {
       return { code: -1, msg: '请选择服务项目' };
     }
 
-    // 查询技师信息
-    let staff = await vk.baseDao.findById({
-      dbName: dbName.staff,
-      id: staff_id,
+    let count = await vk.baseDao.count({
+      dbName: dbName.record,
+      whereJson: {
+        staff_id,
+        start_time: _.lte(Date.now()),
+        end_time: _.gte(Date.now()),
+      },
+      fieldJson: {},
     });
-    if (!staff || staff.status !== 0) {
-      return { code: -1, msg: '该技师不可用' };
-    }
+    if (count > 0) return { code: -1, msg: '该技师不可用' };
 
     // 查询房间信息
     let room = await vk.baseDao.findById({
@@ -73,8 +78,8 @@ const cloudObject = {
 
     // 创建上钟记录
     let recordData = {
-      staff_id: staff._id,
-      staff_name: staff.name,
+      staff_id: staff_id,
+      staff_name: staff_name,
       room_id: room._id,
       room_name: room.name,
       service_id: service._id,
@@ -100,11 +105,11 @@ const cloudObject = {
     res.record_id = addRes.id;
 
     // 更新技师状态为上钟
-    await vk.baseDao.update({
-      dbName: dbName.staff,
-      whereJson: { _id: staff_id },
-      dataJson: { status: 1 },
-    });
+    // await vk.baseDao.update({
+    //   dbName: dbName.staff,
+    //   whereJson: { _id: staff_id },
+    //   dataJson: { status: 1 },
+    // });
 
     // 更新房间状态为使用中
     await vk.baseDao.update({

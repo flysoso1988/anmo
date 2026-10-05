@@ -15,16 +15,18 @@
         </view>
       </view>
     </view>
-
     <!-- 选择技师 -->
     <view class="section">
       <view class="section-title">选择技师</view>
       <scroll-view scroll-x class="tech-scroll" :show-scrollbar="false">
         <view v-for="staff in staffList" :key="staff._id" class="tech-item" :class="{ selected: form.staff_id === staff._id }" @click="selectStaff(staff)">
           <view class="tech-avatar">
-            <text class="tech-avatar-text">{{ staff.name ? staff.name.charAt(0) : '?' }}</text>
+            <text class="tech-avatar-text">{{ staff.nickname }}</text>
           </view>
-          <text class="tech-name">{{ staff.name }}</text>
+          <!-- <view class="tech-avatar">
+            <wd-avatar :src="staff.avatar" :text="staff.nickname"></wd-avatar>
+          </view> -->
+          <!-- <text class="tech-name">{{ staff.nickname }}</text> -->
         </view>
       </scroll-view>
     </view>
@@ -75,16 +77,12 @@
         </text>
         <text v-else>请选择技师和服务项目</text>
       </view>
-      <view class="btn-confirm" :class="{ disabled: !canSubmit }" @click="submit">
-        <text class="btn-text">确认上钟</text>
-      </view>
+      <wd-button :loading="submitting" :round="false" custom-class="btn-confirm" @click="submit">确认上钟</wd-button>
     </view>
   </view>
 </template>
 
 <script>
-  import { useToast } from '@/uni_modules/wot-design-uni';
-
   let vk = uni.vk;
   export default {
     data() {
@@ -107,14 +105,8 @@
         submitting: false,
       };
     },
-    computed: {
-      canSubmit() {
-        return this.form.staff_id && this.form.room_id && this.form.service_id && !this.submitting;
-      },
-    },
     onLoad(options) {
       vk = uni.vk;
-      this.toast = useToast();
       if (options.room_id) {
         this.fixedRoomId = options.room_id;
         this.form.room_id = options.room_id;
@@ -147,21 +139,15 @@
       },
       async loadStaffList() {
         let res = await vk.callFunction({ url: 'client/select.getStaffList' });
-        if (res.code === 0) {
-          this.staffList = res.list;
-        }
+        this.staffList = res.rows;
       },
       async loadRoomList() {
         let res = await vk.callFunction({ url: 'client/select.getRoomList' });
-        if (res.code === 0) {
-          this.roomList = res.list;
-        }
+        this.roomList = res.rows;
       },
       async loadServiceList() {
         let res = await vk.callFunction({ url: 'client/select.getServiceList' });
-        if (res.code === 0) {
-          this.serviceList = res.list;
-        }
+        this.serviceList = res.rows;
       },
       selectRoom(room) {
         this.form.room_id = room._id;
@@ -169,56 +155,37 @@
       },
       selectStaff(staff) {
         this.form.staff_id = staff._id;
-        this.form.staff_name = staff.name;
+        this.form.staff_name = staff.nickname;
       },
       selectService(service) {
         this.form.service_id = service._id;
         this.form.service_name = service.name;
       },
       async submit() {
-        if (!this.canSubmit) return;
-        if (!this.form.staff_id) {
-          this.toast.show('请选择技师');
-          return;
-        }
-        if (!this.form.room_id) {
-          this.toast.show('请选择房间');
-          return;
-        }
-        if (!this.form.service_id) {
-          this.toast.show('请选择服务项目');
-          return;
-        }
+        const { staff_id, staff_name, room_id, service_id, customer_name, customer_phone, remark } = this.form;
 
-        this.submitting = true;
-        uni.showLoading({ title: '提交中' });
-        try {
-          let res = await vk.callFunction({
-            url: 'client/record.add',
-            data: {
-              staff_id: this.form.staff_id,
-              room_id: this.form.room_id,
-              service_id: this.form.service_id,
-              customer_name: this.form.customer_name,
-              customer_phone: this.form.customer_phone,
-              remark: this.form.remark,
-            },
-          });
-          if (res.code === 0) {
-            this.toast.success('上钟成功');
-            setTimeout(() => {
-              uni.navigateBack();
-            }, 1500);
-          } else {
-            this.toast.show(res.msg);
-          }
-        } catch (e) {
-          this.toast.show('提交失败');
-          console.error(e);
-        } finally {
-          this.submitting = false;
-          uni.hideLoading();
-        }
+        if (vk.pubfn.isNull(staff_id)) return vk.toast('请选择技师');
+        if (vk.pubfn.isNull(room_id)) return vk.toast('请选择房间');
+        if (vk.pubfn.isNull(service_id)) return vk.toast('请选择服务项目');
+
+        vk.callFunction({
+          url: 'client/record.add',
+          loading: { that: this, name: 'submitting' },
+          data: {
+            staff_id,
+            staff_name,
+            room_id,
+            service_id,
+            customer_name,
+            customer_phone,
+            remark,
+          },
+          success: (res) => {
+            vk.toast('上钟成功', 'none', () => {
+              vk.navigateBack();
+            });
+          },
+        });
       },
     },
   };
@@ -454,15 +421,14 @@
     color: var(--fg);
     font-weight: 600;
   }
+
   .btn-confirm {
-    background: var(--accent);
-    border-radius: 20rpx;
-    padding: 20rpx 48rpx;
-    transition: opacity 0.15s;
-    flex-shrink: 0;
-  }
-  .btn-confirm.disabled {
-    opacity: 0.5;
+    background: var(--accent) !important;
+    border-radius: 20rpx !important;
+    // padding: 20rpx 48rpx;
+    // transition: opacity 0.15s;
+    // flex-shrink: 0;
+    height: 44px !important;
   }
   .btn-text {
     font-size: 30rpx;

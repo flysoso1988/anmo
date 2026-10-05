@@ -8,6 +8,9 @@
  * 数据库表名配置类型定义
  * @typedef {Object} DatabaseTables
  * @property {string} test - 测试表
+ * @property {string} record - 记录表
+ * @property {string} room - 房间表
+ * @property {string} service - 服务表
  * @property {string} user - 用户表
  * @property {string} role - 角色表
  * @property {string} permission - 权限表
@@ -39,12 +42,10 @@
 module.exports = {
   // ==================== 项目业务表 ====================
   // 新增表标记点（请勿删除此行注释，自动化建Dao工具需要）
-  staff: "vk-staff", // 技师表
-  room: "vk-room", // 房间表
-  service: "vk-service", // 服务项目表
-  record: "vk-record", // 上钟记录表
   test: "vk-test", // 测试表
-
+  record: "vk-record",
+  room: "vk-room",
+  service: "vk-service",
   // ==================== vk框架内置表 ====================
   user: "uni-id-users", // 用户表
   role: "uni-id-roles", // 角色表

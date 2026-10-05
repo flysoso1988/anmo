@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "external_directory": {
+      "E:/Works/uniapp/vk-unicloud-docs/docs": "allow",
+      "E:/Works/uniapp/vk-unicloud-docs/docs/**": "allow",
+      "E:\\Works\\uniapp\\vk-unicloud-docs\\docs": "allow",
+      "E:\\Works\\uniapp\\vk-unicloud-docs\\docs\\**": "allow"
+    }
+  },
+  "references": {
+    "vk-docs": {
+      "path": "E:/Works/uniapp/vk-unicloud-docs/docs",
+      "description": "vk-unicloud 官方本地文档（优先使用本地文档）"
+    }
+  }
+}
