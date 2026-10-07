@@ -136,3 +136,17 @@ this.vk.callFunction({
 - `userInfo` 和 `uid` 仅在 `kh/` 目录下的函数中可信任
 - 使用 `vk.navigateTo` 代替 `uni.navigateTo`，否则 `checkTokenPages` 登录拦截不生效
 - `store/index.js` 通过 `import.meta.glob('./modules/**/*.js')` 加载模块，新增 Vuex 模块放 `store/modules/`
+
+## Agent skills
+
+### Issue tracker
+
+Issues 通过 GitHub Issues 跟踪（`gh` CLI）。See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+使用五个默认 triage 标签（`needs-triage` / `needs-info` / `ready-for-agent` / `ready-for-human` / `wontfix`）。See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+单上下文布局：根 `CONTEXT.md` + `docs/adr/`。See `docs/agents/domain.md`.
