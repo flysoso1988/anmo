@@ -1,0 +1,83 @@
+{
+  "bsonType": "object",
+  "required": ["order_id", "item_id", "status"],
+  "permission": {
+    "read": false,
+    "create": false,
+    "update": false,
+    "delete": false
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "order_id": {
+      "bsonType": "string",
+      "title": "所属账单ID",
+      "description": "关联 vk-order._id",
+      "foreignKey": "vk-order._id"
+    },
+    "item_id": {
+      "bsonType": "string",
+      "title": "项目ID",
+      "description": "关联 vk-service._id，服务项目快照来源",
+      "foreignKey": "vk-service._id"
+    },
+    "name": {
+      "bsonType": "string",
+      "title": "项目名快照",
+      "description": "开单时的项目名称快照，后续改价不影响历史账单"
+    },
+    "price": {
+      "bsonType": "double",
+      "title": "单价快照",
+      "description": "开单时的一口价快照"
+    },
+    "qty": {
+      "bsonType": "int",
+      "title": "数量",
+      "defaultValue": 1,
+      "description": "项目数量"
+    },
+    "tech_id": {
+      "bsonType": "string",
+      "title": "技师ID",
+      "description": "关联 vk-tech._id",
+      "foreignKey": "vk-tech._id"
+    },
+    "clock_no": {
+      "bsonType": "int",
+      "title": "当前钟数",
+      "defaultValue": 0,
+      "description": "当前钟数，加钟时累加"
+    },
+    "clock_start": {
+      "bsonType": "timestamp",
+      "title": "本钟起钟时间",
+      "description": "上钟操作时记录的时间"
+    },
+    "clock_end": {
+      "bsonType": "timestamp",
+      "title": "本钟落钟时间",
+      "description": "落钟操作时记录的时间"
+    },
+    "status": {
+      "bsonType": "int",
+      "title": "明细状态",
+      "defaultValue": 0,
+      "enum": [
+        { "text": "待上钟", "value": 0 },
+        { "text": "上钟中", "value": 1 },
+        { "text": "已完成", "value": 2 },
+        { "text": "已取消", "value": 3 }
+      ],
+      "description": "0=待上钟 1=上钟中 2=已完成 3=已取消"
+    },
+    "_add_time": {
+      "bsonType": "timestamp",
+      "title": "创建时间",
+      "description": "vk框架自动注入，记录文档创建时间",
+      "forceDefaultValue": { "$env": "now" }
+    }
+  }
+}

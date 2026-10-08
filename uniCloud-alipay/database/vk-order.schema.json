@@ -1,0 +1,91 @@
+{
+  "bsonType": "object",
+  "required": ["order_no", "room_id", "status"],
+  "permission": {
+    "read": false,
+    "create": false,
+    "update": false,
+    "delete": false
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "order_no": {
+      "bsonType": "string",
+      "title": "账单号",
+      "description": "日期+序号，如 20261008001"
+    },
+    "room_id": {
+      "bsonType": "string",
+      "title": "房间ID",
+      "description": "关联 vk-room._id",
+      "foreignKey": "vk-room._id"
+    },
+    "member_id": {
+      "bsonType": "string",
+      "title": "会员ID",
+      "description": "一期为空，预留二期会员体系"
+    },
+    "status": {
+      "bsonType": "int",
+      "title": "账单状态",
+      "defaultValue": 1,
+      "enum": [
+        { "text": "消费中", "value": 1 },
+        { "text": "已结账", "value": 2 },
+        { "text": "已取消", "value": 3 }
+      ],
+      "description": "1=消费中 2=已结账 3=已取消"
+    },
+    "total_amount": {
+      "bsonType": "double",
+      "title": "消费合计",
+      "defaultValue": 0,
+      "description": "所有明细金额之和"
+    },
+    "discount_amount": {
+      "bsonType": "double",
+      "title": "优惠合计",
+      "defaultValue": 0,
+      "description": "减免+折扣金额"
+    },
+    "pay_amount": {
+      "bsonType": "double",
+      "title": "应收金额",
+      "defaultValue": 0,
+      "description": "total_amount - discount_amount"
+    },
+    "open_uid": {
+      "bsonType": "string",
+      "title": "开单人ID",
+      "description": "开单操作员的用户ID"
+    },
+    "open_time": {
+      "bsonType": "timestamp",
+      "title": "开单时间",
+      "description": "账单创建时间"
+    },
+    "close_uid": {
+      "bsonType": "string",
+      "title": "结账人ID",
+      "description": "结账操作员的用户ID"
+    },
+    "close_time": {
+      "bsonType": "timestamp",
+      "title": "结账时间",
+      "description": "结账完成时间"
+    },
+    "remark": {
+      "bsonType": "string",
+      "title": "备注",
+      "description": "账单备注信息"
+    },
+    "_add_time": {
+      "bsonType": "timestamp",
+      "title": "创建时间",
+      "description": "vk框架自动注入，记录文档创建时间",
+      "forceDefaultValue": { "$env": "now" }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "IndexName": "_add_time",
+    "MgoKeySchema": { "MgoIndexKeys": [{ "Name": "_add_time", "Direction": "-1", "Type": "long" }], "MgoIsUnique": false }
+  },
+  {
+    "IndexName": "status_open_time",
+    "MgoKeySchema": {
+      "MgoIndexKeys": [
+        { "Name": "status", "Direction": "1", "Type": "int" },
+        { "Name": "open_time", "Direction": "-1", "Type": "long" }
+      ],
+      "MgoIsUnique": false
+    }
+  },
+  {
+    "IndexName": "room_id_status",
+    "MgoKeySchema": {
+      "MgoIndexKeys": [
+        { "Name": "room_id", "Direction": "1" },
+        { "Name": "status", "Direction": "1", "Type": "int" }
+      ],
+      "MgoIsUnique": false
+    }
+  }
+]
