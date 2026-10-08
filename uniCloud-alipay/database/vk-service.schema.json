@@ -1,0 +1,46 @@
+{
+  "bsonType": "object",
+  "required": [],
+  "permission": {
+    "read": false,
+    "create": false,
+    "update": false,
+    "delete": false
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "name": {
+      "bsonType": "string",
+      "title": "项目名称",
+      "description": "按摩项目名称"
+    },
+    "description": {
+      "bsonType": "string",
+      "title": "项目备注",
+      "description": "项目说明"
+    },
+    "price": {
+      "bsonType": "double",
+      "title": "标价",
+      "description": "项目原价"
+    },
+    "duration": {
+      "bsonType": "int",
+      "title": "项目时长(分钟)",
+      "description": "服务时长，单位分钟"
+    },
+    "status": {
+      "bsonType": "bool",
+      "title": "是否启用",
+      "defaultValue": true,
+      "description": "项目是否上架可用"
+    },
+    "_add_time": {
+      "bsonType": "timestamp",
+      "title": "创建时间",
+      "description": "vk框架自动注入，项目创建时间"
+    }
+  }
+}

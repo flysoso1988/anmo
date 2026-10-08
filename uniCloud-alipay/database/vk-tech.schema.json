@@ -1,0 +1,71 @@
+{
+  "bsonType": "object",
+  "required": ["user_id", "name"],
+  "permission": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  },
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "title": "主键ID",
+      "description": "uniCloud自动生成主键"
+    },
+    "_add_time": {
+      "bsonType": "timestamp",
+      "title": "创建时间",
+      "description": "vk框架自动注入，记录文档创建时间"
+    },
+    "user_id": {
+      "bsonType": "string",
+      "title": "uni-id用户ID",
+      "description": "关联uni-id-users._id，唯一绑定登录账号",
+      "foreignKey": "uni-id-users._id",
+      "defaultValue": {
+        "$env": "uid"
+      }
+    },
+    "number": {
+      "bsonType": "int",
+      "title": "技师编号",
+      "description": "技师名称（原staff_name）"
+    },
+    "name": {
+      "bsonType": "string",
+      "title": "技师姓名",
+      "description": "技师名称（原staff_name）"
+    },
+    "avatar": {
+      "bsonType": "string",
+      "title": "技师头像",
+      "description": "技师头像，选填"
+    },
+    "status": {
+      "bsonType": "int",
+      "title": "状态",
+      "defaultValue": 1,
+      "enum": [
+        {
+          "text": "空闲",
+          "value": 0
+        },
+        {
+          "text": "忙碌",
+          "value": 1
+        },
+        {
+          "text": "休息",
+          "value": 2
+        }
+      ],
+      "description": "技师状态"
+    },
+    "remark": {
+      "bsonType": "string",
+      "title": "备注",
+      "description": "技师备注信息，选填"
+    }
+  }
+}

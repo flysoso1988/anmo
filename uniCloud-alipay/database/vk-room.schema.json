@@ -1,0 +1,59 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+  "bsonType": "object",
+  "required": [],
+  "permission": {
+    "read": false,
+    "create": false,
+    "update": false,
+    "delete": false
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "name": {
+      "bsonType": "string",
+      "title": "房间名称",
+      "description": "例如：1号房"
+    },
+    "room_type": {
+      "bsonType": "int",
+      "title": "房间类型",
+      "defaultValue": 0,
+      "description": "房间类型，足疗、spa"
+    },
+    "bed_count": {
+      "bsonType": "int",
+      "title": "按摩床数量",
+      "defaultValue": 1,
+      "minimum": 1,
+      "description": "房间内可同时使用的按摩床，支持1张及多张"
+    },
+    "status": {
+      "bsonType": "int",
+      "title": "房间状态",
+      "defaultValue": 0,
+      "enum": [
+        {
+          "text": "空闲",
+          "value": 0
+        },
+        {
+          "text": "服务中",
+          "value": 1
+        },
+        {
+          "text": "待打扫",
+          "value": 2
+        }
+      ]
+    },
+    "_add_time": {
+      "bsonType": "timestamp",
+      "title": "创建时间",
+      "description": "vk框架自动注入，房间记录创建时间",
+      "forceDefaultValue": { "$env": "now" }
+    }
+  }
+}
