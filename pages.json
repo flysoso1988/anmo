@@ -7,6 +7,20 @@
         "enablePullDownRefresh": true,
         "navigationBarTitleText": "首页"
       }
+    },
+    {
+      "path": "pages_sub/room/list/list",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "房间管理"
+      }
+    },
+    {
+      "path": "pages_sub/room/detail/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "房间详情"
+      }
     }
   ],
   "subPackages": [
