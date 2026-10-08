@@ -12214,8 +12214,9 @@
         },
         {
           "type": "frame",
-          "id": "W3wtA",
+          "id": "jvrSc",
           "name": "内容区",
+          "context": "div",
           "width": "fill_container",
           "layout": "vertical",
           "gap": 12,
@@ -12228,95 +12229,571 @@
           "children": [
             {
               "type": "frame",
-              "id": "hMX89",
-              "name": "房间卡片列表",
+              "id": "tspqc",
+              "name": "button",
+              "context": "button",
               "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
-              "gap": 10,
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
               "children": [
                 {
                   "type": "frame",
-                  "id": "iJhiv",
-                  "name": "房间卡/101 足疗房",
+                  "id": "rMD01",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "q3wdg7",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "HaWAx",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "101 足疗房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "s493Yl",
-                          "type": "ref",
-                          "ref": "nzZYU",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "aCXM7",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "f8PQw",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "WoOAm",
+                      "name": "101 · 泰式厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "101 · 泰式厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
                     },
                     {
                       "type": "frame",
-                      "id": "uOphf",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "o3xZsO",
+                      "name": "服务中",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "o2BX4",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "armchair",
-                          "library": "lucide",
-                          "fill": "$text-muted"
+                          "type": "text",
+                          "id": "lV2BN",
+                          "fill": "$primary",
+                          "content": "服务中",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "P92fLC",
+                  "name": "林淑华 · 剩 22 分钟",
+                  "context": "span",
+                  "fill": "$text-secondary",
+                  "content": "林淑华 · 剩 22 分钟",
+                  "lineHeight": 1.55,
+                  "fontFamily": "SF Pro Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "frame",
+                  "id": "zBtbt",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tTxx1",
+                      "name": "¥398 / 90分钟",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "¥398 / 90分钟",
+                      "lineHeight": 1.55,
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "h8bWk1",
+                      "name": "svg",
+                      "context": "svg",
+                      "clip": true,
+                      "width": 38,
+                      "height": 38,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "A0ggVz",
+                          "x": 4,
+                          "y": 4,
+                          "width": 30,
+                          "height": 30,
+                          "stroke": "$primary-light",
+                          "strokeWidth": 3.4
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "gLYeF",
+                          "x": 4,
+                          "y": 34,
+                          "rotation": 90,
+                          "width": 30,
+                          "height": 30,
+                          "stroke": "$primary",
+                          "strokeWidth": 3.4,
+                          "strokeLinecap": "round"
                         },
                         {
                           "type": "text",
-                          "id": "n7H4dx",
-                          "name": "详情文字",
+                          "id": "xPE3p",
+                          "x": 9.079345703125,
+                          "y": 14.100000000000001,
+                          "fill": "$text-primary",
+                          "content": "76%",
+                          "fontFamily": "Inter",
+                          "fontSize": 9,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gUcuI",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UTENM",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "f0tdDH",
+                      "name": "102 · 中式厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "102 · 中式厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hn6kX",
+                      "name": "服务中",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VlSnU",
+                          "fill": "$primary",
+                          "content": "服务中",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Ystne",
+                  "name": "周文博 · 剩 48 分钟",
+                  "context": "span",
+                  "fill": "$text-secondary",
+                  "content": "周文博 · 剩 48 分钟",
+                  "lineHeight": 1.55,
+                  "fontFamily": "SF Pro Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "frame",
+                  "id": "So430",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QJQMh",
+                      "name": "¥268 / 60分钟",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "¥268 / 60分钟",
+                      "lineHeight": 1.55,
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n09c71",
+                      "name": "svg",
+                      "context": "svg",
+                      "clip": true,
+                      "width": 38,
+                      "height": 38,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "D2I31",
+                          "x": 4,
+                          "y": 4,
+                          "width": 30,
+                          "height": 30,
+                          "stroke": "$primary-light",
+                          "strokeWidth": 3.4
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "duxGv",
+                          "x": 4,
+                          "y": 34,
+                          "rotation": 90,
+                          "width": 30,
+                          "height": 30,
+                          "stroke": "$primary",
+                          "strokeWidth": 3.4,
+                          "strokeLinecap": "round"
+                        },
+                        {
+                          "type": "text",
+                          "id": "LSRKw",
+                          "x": 8.7080078125,
+                          "y": 14.100000000000001,
+                          "fill": "$text-primary",
+                          "content": "20%",
+                          "fontFamily": "Inter",
+                          "fontSize": 9,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BcYsV",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "URLMl",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wMYz9",
+                      "name": "103 · 养生厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "103 · 养生厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Y0OXiH",
+                      "name": "服务中",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "R5i4O",
+                          "fill": "$primary",
+                          "content": "服务中",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "q6mmz",
+                  "name": "陈可欣 · 剩 11 分钟",
+                  "context": "span",
+                  "fill": "$text-secondary",
+                  "content": "陈可欣 · 剩 11 分钟",
+                  "lineHeight": 1.55,
+                  "fontFamily": "SF Pro Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
+                  "type": "frame",
+                  "id": "luNLo",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "a48Jp",
+                      "name": "¥188 / 45分钟",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "¥188 / 45分钟",
+                      "lineHeight": 1.55,
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "btaMF",
+                      "name": "svg",
+                      "context": "svg",
+                      "clip": true,
+                      "width": 38,
+                      "height": 38,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "n0hJpZ",
+                          "x": 4,
+                          "y": 4,
+                          "width": 30,
+                          "height": 30,
+                          "stroke": "$primary-light",
+                          "strokeWidth": 3.4
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "alzzm",
+                          "x": 4,
+                          "y": 34,
+                          "rotation": 90,
+                          "width": 30,
+                          "height": 30,
+                          "stroke": "$primary",
+                          "strokeWidth": 3.4,
+                          "strokeLinecap": "round"
+                        },
+                        {
+                          "type": "text",
+                          "id": "cPGBP",
+                          "x": 9.079345703125,
+                          "y": 14.100000000000001,
+                          "fill": "$text-primary",
+                          "content": "76%",
+                          "fontFamily": "Inter",
+                          "fontSize": 9,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JU5bJ",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hcxuz",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xOjhe",
+                      "name": "201 · VIP 套房",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "201 · VIP 套房",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qlGfE",
+                      "name": "空闲",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$success-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gHUdy",
                           "fill": "$text-secondary",
-                          "content": "可安排服务",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
+                          "content": "空闲",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
@@ -12324,98 +12801,136 @@
                 },
                 {
                   "type": "frame",
-                  "id": "sxlwa",
-                  "name": "房间卡/102 足疗房",
+                  "id": "cfW4e",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "HOP19",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "PvzoD",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "102 足疗房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "lWoyR",
-                          "type": "ref",
-                          "ref": "REjqY",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "D81uU",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "Z2At1r",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "ElITq",
+                      "name": "可立即安排客人",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "可立即安排客人",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "GSPXZ",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "FQlEZ",
+                      "name": "指派",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "kZx0w",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "user",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
+                          "type": "text",
+                          "id": "NOGd1",
+                          "fill": "$primary",
+                          "content": "指派",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "p5HQu",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "pzNCh",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Hl7Ru",
+                      "name": "202 · 日式厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "202 · 日式厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wIRSb",
+                      "name": "空闲",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$success-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
                         {
                           "type": "text",
-                          "id": "fl2Kp",
-                          "name": "详情文字",
+                          "id": "QgqjZ",
                           "fill": "$text-secondary",
-                          "content": "技师 王海 · 足疗 60min",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "id": "hJwnk",
-                          "type": "ref",
-                          "ref": "DZamZ",
-                          "name": "倒计时",
-                          "descendants": {
-                            "w4KS9c": {
-                              "content": "剩余 38:12"
-                            }
-                          }
+                          "content": "空闲",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
@@ -12423,98 +12938,136 @@
                 },
                 {
                   "type": "frame",
-                  "id": "LASPq",
-                  "name": "房间卡/103 按摩房",
+                  "id": "jtNsD",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "iEaJv",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "G3DfoA",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "103 按摩房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "uIv3E",
-                          "type": "ref",
-                          "ref": "REjqY",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "IsLYD",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "KhRG0",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "T3o5HP",
+                      "name": "可立即安排客人",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "可立即安排客人",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "mmeTq",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "RjNDk",
+                      "name": "指派",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "KnHYo",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "user",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
+                          "type": "text",
+                          "id": "kLbFF",
+                          "fill": "$primary",
+                          "content": "指派",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UtAr3",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GoY4T",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "F4H64b",
+                      "name": "203 · 足疗厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "203 · 足疗厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xTkyi",
+                      "name": "空闲",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$success-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
                         {
                           "type": "text",
-                          "id": "Ho0IP",
-                          "name": "详情文字",
+                          "id": "jKNLn",
                           "fill": "$text-secondary",
-                          "content": "技师 李娜 · 按摩 90min",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "id": "T2WGw",
-                          "type": "ref",
-                          "ref": "DZamZ",
-                          "name": "倒计时",
-                          "descendants": {
-                            "w4KS9c": {
-                              "content": "剩余 01:15:40"
-                            }
-                          }
+                          "content": "空闲",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
@@ -12522,87 +13075,136 @@
                 },
                 {
                   "type": "frame",
-                  "id": "W44kOh",
-                  "name": "房间卡/104 按摩房",
+                  "id": "fALgE",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "nza2E",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "jMQuO",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "104 按摩房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "n1POxz",
-                          "type": "ref",
-                          "ref": "F2OP4",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "qjcQJ",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "JICgr",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "n2GZQf",
+                      "name": "可立即安排客人",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "可立即安排客人",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "Lh8Rl",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "FyGzo",
+                      "name": "指派",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "QSE4P",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "sparkles",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
+                          "type": "text",
+                          "id": "m7kK3a",
+                          "fill": "$primary",
+                          "content": "指派",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wN3kP",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "U5rpw",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "y4Rpg",
+                      "name": "301 · 情侣厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "301 · 情侣厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FqI8B",
+                      "name": "空闲",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$success-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
                         {
                           "type": "text",
-                          "id": "i0ZynL",
-                          "name": "详情文字",
+                          "id": "AfSid",
                           "fill": "$text-secondary",
-                          "content": "预计 15 分钟后完成",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
+                          "content": "空闲",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
@@ -12610,549 +13212,513 @@
                 },
                 {
                   "type": "frame",
-                  "id": "pVOlZ",
-                  "name": "房间卡/201 SPA房",
+                  "id": "NjX4S",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "Q2L0O",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "DhhPl",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "201 SPA房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "l75Euw",
-                          "type": "ref",
-                          "ref": "nzZYU",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "ZasMf",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "wwslL",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "b6wfJ",
+                      "name": "可立即安排客人",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "可立即安排客人",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "NSMKY",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "YXjnX",
+                      "name": "指派",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "jUepk",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "armchair",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
+                          "type": "text",
+                          "id": "FFVT5",
+                          "fill": "$primary",
+                          "content": "指派",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LuR67",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DQsFZ",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zz1TT",
+                      "name": "B1 · 员工休息室",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "B1 · 员工休息室",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "q0fDrj",
+                      "name": "待清洁",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$warning-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
                         {
                           "type": "text",
-                          "id": "ZoBpS",
-                          "name": "详情文字",
-                          "fill": "$text-secondary",
-                          "content": "可安排服务",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
+                          "id": "B4tjn",
+                          "fill": "$warning",
+                          "content": "待清洁",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
                   ]
                 },
                 {
+                  "type": "text",
+                  "id": "SdOIs",
+                  "name": "需完成清洁消毒",
+                  "context": "span",
+                  "fill": "$text-secondary",
+                  "content": "需完成清洁消毒",
+                  "lineHeight": 1.55,
+                  "fontFamily": "SF Pro Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
                   "type": "frame",
-                  "id": "O8SBsI",
-                  "name": "房间卡/202 SPA房",
+                  "id": "M8xIoM",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "K2Ud3E",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "IJSqv",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "202 SPA房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "q0uppR",
-                          "type": "ref",
-                          "ref": "REjqY",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "U7llhX",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "S5GOk",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "p7BW8",
+                      "name": "上一单：韩式松骨 60 分钟",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "上一单：韩式松骨 60 分钟",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "mmIDe",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "cVJGs",
+                      "name": "去清洁",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "A77VUD",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "user",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
+                          "type": "text",
+                          "id": "wulC2",
+                          "fill": "$primary",
+                          "content": "去清洁",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "r469v2",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "T1EPe6",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i7HcZl",
+                      "name": "302 · 泰式厅",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "302 · 泰式厅",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "btZIc",
+                      "name": "待清洁",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$warning-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
                         {
                           "type": "text",
-                          "id": "Ju298",
-                          "name": "详情文字",
-                          "fill": "$text-secondary",
-                          "content": "技师 张伟 · SPA 60min",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "id": "W59nO",
-                          "type": "ref",
-                          "ref": "DZamZ",
-                          "name": "倒计时",
-                          "descendants": {
-                            "w4KS9c": {
-                              "content": "剩余 52:07"
-                            }
-                          }
+                          "id": "Vojis",
+                          "fill": "$warning",
+                          "content": "待清洁",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
                   ]
                 },
                 {
+                  "type": "text",
+                  "id": "zz8l6",
+                  "name": "需完成清洁消毒",
+                  "context": "span",
+                  "fill": "$text-secondary",
+                  "content": "需完成清洁消毒",
+                  "lineHeight": 1.55,
+                  "fontFamily": "SF Pro Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
+                },
+                {
                   "type": "frame",
-                  "id": "nH4rv",
-                  "name": "房间卡/203 足疗房",
+                  "id": "hIIAe",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "pRtNk",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "w8V9J",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "203 足疗房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "igqrv",
-                          "type": "ref",
-                          "ref": "F2OP4",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "CyzO8",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "aUZVx",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "zNqpL",
+                      "name": "上一单：足底按摩 45 分钟",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "上一单：足底按摩 45 分钟",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "oOcAI",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "hVgYW",
+                      "name": "去清洁",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "s5DVK",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "sparkles",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
+                          "type": "text",
+                          "id": "sN0XM",
+                          "fill": "$primary",
+                          "content": "去清洁",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WuFwy",
+              "name": "button",
+              "context": "button",
+              "width": "fill_container",
+              "fill": "$bg-card",
+              "cornerRadius": 18,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BREbb",
+                  "name": "span",
+                  "context": "span",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AvUDa",
+                      "name": "303 · 头疗室",
+                      "context": "span",
+                      "fill": "$text-primary",
+                      "content": "303 · 头疗室",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Avenir Next",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UFkf5",
+                      "name": "维护中",
+                      "context": "span",
+                      "height": 23.05,
+                      "fill": "$danger-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        3,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "children": [
                         {
                           "type": "text",
-                          "id": "rWERb",
-                          "name": "详情文字",
-                          "fill": "$text-secondary",
-                          "content": "预计 20 分钟后完成",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
+                          "id": "gAEhW",
+                          "fill": "$danger",
+                          "content": "维护中",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.44
                         }
                       ]
                     }
                   ]
                 },
                 {
-                  "type": "frame",
-                  "id": "jU5wT",
-                  "name": "房间卡/204 足疗房",
-                  "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "Lbd8I",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "S022pg",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "204 足疗房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "AINDD",
-                          "type": "ref",
-                          "ref": "nzZYU",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "nevpS",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "Z3xWO",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "asy55",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "J4bcgV",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "armchair",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "UtmMR",
-                          "name": "详情文字",
-                          "fill": "$text-secondary",
-                          "content": "可安排服务",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "text",
+                  "id": "OS6TN",
+                  "name": "暂停接待",
+                  "context": "span",
+                  "fill": "$text-secondary",
+                  "content": "暂停接待",
+                  "lineHeight": 1.55,
+                  "fontFamily": "SF Pro Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.24
                 },
                 {
                   "type": "frame",
-                  "id": "dMm9A",
-                  "name": "房间卡/301 按摩房",
+                  "id": "mBdSZ",
+                  "name": "span",
+                  "context": "span",
                   "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
+                  "gap": 6,
+                  "padding": [
+                    11,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "aYqvV",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "xkA49",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "301 按摩房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "Q4F7B",
-                          "type": "ref",
-                          "ref": "REjqY",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "z0yYi",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "p8Wti",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "a3WaN",
+                      "name": "热水器故障 · 预计明日修复",
+                      "context": "span",
+                      "fill": "$text-secondary",
+                      "content": "热水器故障 · 预计明日修复",
+                      "lineHeight": 1.55,
+                      "fontFamily": "SF Pro Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.12
                     },
                     {
                       "type": "frame",
-                      "id": "nzBSb",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "lE43V",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "user",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "x3cEF8",
-                          "name": "详情文字",
-                          "fill": "$text-secondary",
-                          "content": "技师 陈静 · 按摩 45min",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "id": "DzWHT",
-                          "type": "ref",
-                          "ref": "DZamZ",
-                          "name": "倒计时",
-                          "descendants": {
-                            "w4KS9c": {
-                              "content": "剩余 00:09:45"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "UvmqO",
-                  "name": "房间卡/302 SPA房",
-                  "width": "fill_container",
-                  "fill": "$surface",
-                  "cornerRadius": 14,
-                  "stroke": "$line",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 14,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "f9UJtf",
-                      "name": "信息行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
+                      "id": "z6hPai",
+                      "name": "报修",
+                      "context": "span",
+                      "height": 30,
+                      "fill": "$primary-light",
+                      "cornerRadius": 999,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        11
+                      ],
+                      "justifyContent": "center",
                       "children": [
                         {
                           "type": "text",
-                          "id": "b3HvVr",
-                          "name": "房间名",
-                          "fill": "$text-primary",
-                          "content": "302 SPA房",
-                          "fontFamily": "$font-app",
-                          "fontSize": 16,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "id": "M2Q5Mf",
-                          "type": "ref",
-                          "ref": "nzZYU",
-                          "name": "状态标签"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "mM1Bf",
-                          "name": "占位",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "icon",
-                          "id": "iWc6c",
-                          "name": "箭头",
-                          "width": 18,
-                          "height": 18,
-                          "icon": "chevron-right",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "wU2Kj",
-                      "name": "详情行",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "i4NtKF",
-                          "name": "详情图标",
-                          "width": 14,
-                          "height": 14,
-                          "icon": "armchair",
-                          "library": "lucide",
-                          "fill": "$text-muted"
-                        },
-                        {
-                          "type": "text",
-                          "id": "sctoC",
-                          "name": "详情文字",
-                          "fill": "$text-secondary",
-                          "content": "可安排服务",
-                          "fontFamily": "$font-app",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
+                          "id": "AhHBX",
+                          "fill": "$primary",
+                          "content": "报修",
+                          "lineHeight": 1.55,
+                          "fontFamily": "SF Pro Text",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.24
                         }
                       ]
                     }
@@ -13168,7 +13734,7 @@
       "type": "frame",
       "id": "ZRiu7",
       "x": 0,
-      "y": 1255,
+      "y": 499,
       "name": "01 首页",
       "context": "div",
       "clip": true,
@@ -17434,1518 +18000,6 @@
                           ]
                         }
                       ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "jvrSc",
-      "x": 4124,
-      "y": 1782,
-      "name": "房间列表",
-      "context": "div",
-      "width": "fill_container(351)",
-      "layout": "vertical",
-      "gap": 10,
-      "children": [
-        {
-          "type": "frame",
-          "id": "tspqc",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "rMD01",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "WoOAm",
-                  "name": "101 · 泰式厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "101 · 泰式厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "o3xZsO",
-                  "name": "服务中",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "lV2BN",
-                      "fill": "$primary",
-                      "content": "服务中",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "P92fLC",
-              "name": "林淑华 · 剩 22 分钟",
-              "context": "span",
-              "fill": "$text-secondary",
-              "content": "林淑华 · 剩 22 分钟",
-              "lineHeight": 1.55,
-              "fontFamily": "SF Pro Text",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "letterSpacing": 0.24
-            },
-            {
-              "type": "frame",
-              "id": "zBtbt",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "tTxx1",
-                  "name": "¥398 / 90分钟",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "¥398 / 90分钟",
-                  "lineHeight": 1.55,
-                  "fontFamily": "JetBrains Mono",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "h8bWk1",
-                  "name": "svg",
-                  "context": "svg",
-                  "clip": true,
-                  "width": 38,
-                  "height": 38,
-                  "layout": "none",
-                  "children": [
-                    {
-                      "type": "ellipse",
-                      "id": "A0ggVz",
-                      "x": 4,
-                      "y": 4,
-                      "width": 30,
-                      "height": 30,
-                      "stroke": "$primary-light",
-                      "strokeWidth": 3.4
-                    },
-                    {
-                      "type": "ellipse",
-                      "id": "gLYeF",
-                      "x": 4,
-                      "y": 34,
-                      "rotation": 90,
-                      "width": 30,
-                      "height": 30,
-                      "stroke": "$primary",
-                      "strokeWidth": 3.4,
-                      "strokeLinecap": "round"
-                    },
-                    {
-                      "type": "text",
-                      "id": "xPE3p",
-                      "x": 9.079345703125,
-                      "y": 14.100000000000001,
-                      "fill": "$text-primary",
-                      "content": "76%",
-                      "fontFamily": "Inter",
-                      "fontSize": 9,
-                      "fontWeight": "600"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "gUcuI",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "UTENM",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "f0tdDH",
-                  "name": "102 · 中式厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "102 · 中式厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "hn6kX",
-                  "name": "服务中",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "VlSnU",
-                      "fill": "$primary",
-                      "content": "服务中",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "Ystne",
-              "name": "周文博 · 剩 48 分钟",
-              "context": "span",
-              "fill": "$text-secondary",
-              "content": "周文博 · 剩 48 分钟",
-              "lineHeight": 1.55,
-              "fontFamily": "SF Pro Text",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "letterSpacing": 0.24
-            },
-            {
-              "type": "frame",
-              "id": "So430",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "QJQMh",
-                  "name": "¥268 / 60分钟",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "¥268 / 60分钟",
-                  "lineHeight": 1.55,
-                  "fontFamily": "JetBrains Mono",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "n09c71",
-                  "name": "svg",
-                  "context": "svg",
-                  "clip": true,
-                  "width": 38,
-                  "height": 38,
-                  "layout": "none",
-                  "children": [
-                    {
-                      "type": "ellipse",
-                      "id": "D2I31",
-                      "x": 4,
-                      "y": 4,
-                      "width": 30,
-                      "height": 30,
-                      "stroke": "$primary-light",
-                      "strokeWidth": 3.4
-                    },
-                    {
-                      "type": "ellipse",
-                      "id": "duxGv",
-                      "x": 4,
-                      "y": 34,
-                      "rotation": 90,
-                      "width": 30,
-                      "height": 30,
-                      "stroke": "$primary",
-                      "strokeWidth": 3.4,
-                      "strokeLinecap": "round"
-                    },
-                    {
-                      "type": "text",
-                      "id": "LSRKw",
-                      "x": 8.7080078125,
-                      "y": 14.100000000000001,
-                      "fill": "$text-primary",
-                      "content": "20%",
-                      "fontFamily": "Inter",
-                      "fontSize": 9,
-                      "fontWeight": "600"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "BcYsV",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "URLMl",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "wMYz9",
-                  "name": "103 · 养生厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "103 · 养生厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "Y0OXiH",
-                  "name": "服务中",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "R5i4O",
-                      "fill": "$primary",
-                      "content": "服务中",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "q6mmz",
-              "name": "陈可欣 · 剩 11 分钟",
-              "context": "span",
-              "fill": "$text-secondary",
-              "content": "陈可欣 · 剩 11 分钟",
-              "lineHeight": 1.55,
-              "fontFamily": "SF Pro Text",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "letterSpacing": 0.24
-            },
-            {
-              "type": "frame",
-              "id": "luNLo",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "a48Jp",
-                  "name": "¥188 / 45分钟",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "¥188 / 45分钟",
-                  "lineHeight": 1.55,
-                  "fontFamily": "JetBrains Mono",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "btaMF",
-                  "name": "svg",
-                  "context": "svg",
-                  "clip": true,
-                  "width": 38,
-                  "height": 38,
-                  "layout": "none",
-                  "children": [
-                    {
-                      "type": "ellipse",
-                      "id": "n0hJpZ",
-                      "x": 4,
-                      "y": 4,
-                      "width": 30,
-                      "height": 30,
-                      "stroke": "$primary-light",
-                      "strokeWidth": 3.4
-                    },
-                    {
-                      "type": "ellipse",
-                      "id": "alzzm",
-                      "x": 4,
-                      "y": 34,
-                      "rotation": 90,
-                      "width": 30,
-                      "height": 30,
-                      "stroke": "$primary",
-                      "strokeWidth": 3.4,
-                      "strokeLinecap": "round"
-                    },
-                    {
-                      "type": "text",
-                      "id": "cPGBP",
-                      "x": 9.079345703125,
-                      "y": 14.100000000000001,
-                      "fill": "$text-primary",
-                      "content": "76%",
-                      "fontFamily": "Inter",
-                      "fontSize": 9,
-                      "fontWeight": "600"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "JU5bJ",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "hcxuz",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "xOjhe",
-                  "name": "201 · VIP 套房",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "201 · VIP 套房",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "qlGfE",
-                  "name": "空闲",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$success-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "gHUdy",
-                      "fill": "$text-secondary",
-                      "content": "空闲",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "cfW4e",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "ElITq",
-                  "name": "可立即安排客人",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "可立即安排客人",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "FQlEZ",
-                  "name": "指派",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "NOGd1",
-                      "fill": "$primary",
-                      "content": "指派",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "p5HQu",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "pzNCh",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "Hl7Ru",
-                  "name": "202 · 日式厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "202 · 日式厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "wIRSb",
-                  "name": "空闲",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$success-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "QgqjZ",
-                      "fill": "$text-secondary",
-                      "content": "空闲",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "jtNsD",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "T3o5HP",
-                  "name": "可立即安排客人",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "可立即安排客人",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "RjNDk",
-                  "name": "指派",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "kLbFF",
-                      "fill": "$primary",
-                      "content": "指派",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "UtAr3",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "GoY4T",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "F4H64b",
-                  "name": "203 · 足疗厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "203 · 足疗厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "xTkyi",
-                  "name": "空闲",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$success-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "jKNLn",
-                      "fill": "$text-secondary",
-                      "content": "空闲",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "fALgE",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "n2GZQf",
-                  "name": "可立即安排客人",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "可立即安排客人",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "FyGzo",
-                  "name": "指派",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "m7kK3a",
-                      "fill": "$primary",
-                      "content": "指派",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "wN3kP",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "U5rpw",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "y4Rpg",
-                  "name": "301 · 情侣厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "301 · 情侣厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "FqI8B",
-                  "name": "空闲",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$success-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "AfSid",
-                      "fill": "$text-secondary",
-                      "content": "空闲",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "NjX4S",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "b6wfJ",
-                  "name": "可立即安排客人",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "可立即安排客人",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "YXjnX",
-                  "name": "指派",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "FFVT5",
-                      "fill": "$primary",
-                      "content": "指派",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "LuR67",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "DQsFZ",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "zz1TT",
-                  "name": "B1 · 员工休息室",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "B1 · 员工休息室",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "q0fDrj",
-                  "name": "待清洁",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$warning-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "B4tjn",
-                      "fill": "$warning",
-                      "content": "待清洁",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "SdOIs",
-              "name": "需完成清洁消毒",
-              "context": "span",
-              "fill": "$text-secondary",
-              "content": "需完成清洁消毒",
-              "lineHeight": 1.55,
-              "fontFamily": "SF Pro Text",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "letterSpacing": 0.24
-            },
-            {
-              "type": "frame",
-              "id": "M8xIoM",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "p7BW8",
-                  "name": "上一单：韩式松骨 60 分钟",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "上一单：韩式松骨 60 分钟",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "cVJGs",
-                  "name": "去清洁",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "wulC2",
-                      "fill": "$primary",
-                      "content": "去清洁",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "r469v2",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "T1EPe6",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "i7HcZl",
-                  "name": "302 · 泰式厅",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "302 · 泰式厅",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "btZIc",
-                  "name": "待清洁",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$warning-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "Vojis",
-                      "fill": "$warning",
-                      "content": "待清洁",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "zz8l6",
-              "name": "需完成清洁消毒",
-              "context": "span",
-              "fill": "$text-secondary",
-              "content": "需完成清洁消毒",
-              "lineHeight": 1.55,
-              "fontFamily": "SF Pro Text",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "letterSpacing": 0.24
-            },
-            {
-              "type": "frame",
-              "id": "hIIAe",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "zNqpL",
-                  "name": "上一单：足底按摩 45 分钟",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "上一单：足底按摩 45 分钟",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "hVgYW",
-                  "name": "去清洁",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "sN0XM",
-                      "fill": "$primary",
-                      "content": "去清洁",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "WuFwy",
-          "name": "button",
-          "context": "button",
-          "width": "fill_container",
-          "fill": "$bg-card",
-          "cornerRadius": 18,
-          "stroke": "$border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "layout": "vertical",
-          "gap": 8,
-          "padding": [
-            12,
-            14
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "BREbb",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "gap": 8,
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "AvUDa",
-                  "name": "303 · 头疗室",
-                  "context": "span",
-                  "fill": "$text-primary",
-                  "content": "303 · 头疗室",
-                  "lineHeight": 1.55,
-                  "fontFamily": "Avenir Next",
-                  "fontSize": 15,
-                  "fontWeight": "600",
-                  "letterSpacing": -0.15
-                },
-                {
-                  "type": "frame",
-                  "id": "UFkf5",
-                  "name": "维护中",
-                  "context": "span",
-                  "height": 23.05,
-                  "fill": "$danger-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    3,
-                    8
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "gAEhW",
-                      "fill": "$danger",
-                      "content": "维护中",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.44
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "OS6TN",
-              "name": "暂停接待",
-              "context": "span",
-              "fill": "$text-secondary",
-              "content": "暂停接待",
-              "lineHeight": 1.55,
-              "fontFamily": "SF Pro Text",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "letterSpacing": 0.24
-            },
-            {
-              "type": "frame",
-              "id": "mBdSZ",
-              "name": "span",
-              "context": "span",
-              "width": "fill_container",
-              "stroke": "$border",
-              "strokeWidth": {
-                "top": 1
-              },
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "gap": 6,
-              "padding": [
-                11,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "a3WaN",
-                  "name": "热水器故障 · 预计明日修复",
-                  "context": "span",
-                  "fill": "$text-secondary",
-                  "content": "热水器故障 · 预计明日修复",
-                  "lineHeight": 1.55,
-                  "fontFamily": "SF Pro Text",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0.12
-                },
-                {
-                  "type": "frame",
-                  "id": "z6hPai",
-                  "name": "报修",
-                  "context": "span",
-                  "height": 30,
-                  "fill": "$primary-light",
-                  "cornerRadius": 999,
-                  "layout": "vertical",
-                  "padding": [
-                    0,
-                    11
-                  ],
-                  "justifyContent": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "AhHBX",
-                      "fill": "$primary",
-                      "content": "报修",
-                      "lineHeight": 1.55,
-                      "fontFamily": "SF Pro Text",
-                      "fontSize": 12,
-                      "fontWeight": "600",
-                      "letterSpacing": 0.24
                     }
                   ]
                 }
