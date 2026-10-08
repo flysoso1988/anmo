@@ -11,6 +11,9 @@
  * @property {string} record - 记录表
  * @property {string} room - 房间表
  * @property {string} service - 服务表
+ * @property {string} tech - 技师表
+ * @property {string} order - 账单表
+ * @property {string} orderItem - 账单明细表
  * @property {string} user - 用户表
  * @property {string} role - 角色表
  * @property {string} permission - 权限表
@@ -46,6 +49,9 @@ module.exports = {
   record: "vk-record",
   room: "vk-room",
   service: "vk-service",
+  tech: "vk-tech",
+  order: "vk-order",
+  orderItem: "vk-order-item",
   // ==================== vk框架内置表 ====================
   user: "uni-id-users", // 用户表
   role: "uni-id-roles", // 角色表
